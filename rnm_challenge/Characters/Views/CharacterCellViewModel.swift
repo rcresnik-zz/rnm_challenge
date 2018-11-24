@@ -12,6 +12,7 @@ struct CharacterCellViewModel: CharacterProtocol {
     var profileImageUrl: URL?
     var characterName: String
     var originLocation: String?
+    var originLocationId: Int?
     var lastKnownLocation: String
     var lastKnownStatus: String
     var name: String

@@ -8,22 +8,18 @@
 
 import Foundation
 
-//struct LocationViewModel: LocationProtocol {
-//    var profileImageUrl: URL?
-//    var characterName: String
-//    var originLocation: String?
-//    var lastKnownLocation: String
-//    var lastKnownStatus: String
-//    var name: String
-//    var imageURL: URL?
-//
-//    init(item: CharacterProtocol) {
-//        self.profileImageUrl = item.profileImageUrl
-//        self.characterName = item.characterName
-//        self.originLocation = item.originLocation ?? "unknown"
-//        self.lastKnownLocation = item.lastKnownLocation
-//        self.lastKnownStatus = item.lastKnownStatus
-//        self.name = item.characterName
-//        self.imageURL = item.profileImageUrl
-//    }
-//}
+struct LocationViewModel: LocationProtocol {
+    var locationName: String
+    var typeName: String
+    var dimensionName: String
+    var residentsCount: String
+    var residentIds: [Int]
+
+    init(item: LocationProtocol) {
+        self.locationName = item.locationName
+        self.typeName = item.typeName
+        self.dimensionName = item.dimensionName
+        self.residentsCount = item.residentsCount
+        self.residentIds = item.residentIds
+    }
+}

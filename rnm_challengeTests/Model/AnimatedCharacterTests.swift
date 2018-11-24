@@ -47,7 +47,7 @@ class CharacterTests: XCTestCase {
         do {
             let networObject = try JSONDecoder().decode(NetworkObject<AnimatedCharacter>.self, from: response)
             let characters = networObject.results
-            XCTAssertEqual(characters.count, 1, "There should be only 1 character present!")
+            XCTAssertEqual(characters.count, 3, "There should be only 1 character present!")
             
             let rick = characters[0]
             XCTAssertEqual(rick.name, "Rick Sanchez", "The name should be Rick Sanchez!")

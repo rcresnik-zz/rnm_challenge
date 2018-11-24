@@ -9,7 +9,9 @@
 import UIKit
 
 class LocationViewController: UIViewController {
-//    var viewModel: LocationViewModel?
+    static let identifier = "LocationViewController"
+
+    var viewModel: LocationViewModel?
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
@@ -20,10 +22,39 @@ class LocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setup()
     }
 
     func setup() {
+        nameLabel.text = viewModel?.locationName
+        typeLabel.text = viewModel?.typeName
+        dimensionLabel.text = viewModel?.dimensionName
+        residentCountLabel.text = viewModel?.residentsCount
 
+        if let view = residentCountLabel.superview {
+            view.layer.cornerRadius = 5
+            view.layer.borderColor = #colorLiteral(red: 1, green: 0.659891367, blue: 0, alpha: 1)
+            view.layer.borderWidth = 1
+
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.residentsViewTapped(sender:)))
+            view.addGestureRecognizer(gesture)
+        }
+    }
+
+    @objc func residentsViewTapped(sender: UITapGestureRecognizer) {
+        guard let ids = viewModel?.residentIds else { return }
+
+        NetworkManager.shared.characterService.with(ids: ids) { (characters, err) in
+            if let err = err {
+                print(err.description)
+            } else {
+                DispatchQueue.main.async() {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: CharactersTableViewController.identifier)
+                    //        (controller as? CharactersTableViewController)?.viewModel = CharacterViewModel(item: item)
+                    self.present(controller, animated: true, completion: nil)
+                }
+            }
+        }
     }
 }

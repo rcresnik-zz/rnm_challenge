@@ -12,6 +12,7 @@ struct CharacterViewModel: CharacterProtocol {
     var profileImageUrl: URL?
     var characterName: String
     var originLocation: String?
+    var originLocationId: Int?
     var lastKnownLocation: String
     var lastKnownStatus: String
     var name: String
@@ -25,5 +26,6 @@ struct CharacterViewModel: CharacterProtocol {
         self.lastKnownStatus = item.lastKnownStatus
         self.name = item.characterName
         self.imageURL = item.profileImageUrl
+        self.originLocationId = item.originLocationId
     }
 }

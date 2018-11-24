@@ -49,7 +49,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="CharactersTableViewController" id="cqw-Qr-IDB" customClass="CharactersTableViewController" customModule="rnm_challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RXR-BD-stm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -80,7 +80,7 @@
         <!--Character View Controller-->
         <scene sceneID="ig8-hH-RIZ">
             <objects>
-                <viewController id="0LB-Mp-YEK" customClass="CharacterViewController" customModule="rnm_challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CharacterViewController" id="0LB-Mp-YEK" customClass="CharacterViewController" customModule="rnm_challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zX4-IG-Ytz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -159,7 +159,7 @@
         <!--Location View Controller-->
         <scene sceneID="Yw9-EO-dOr">
             <objects>
-                <viewController id="dVH-dl-R7h" customClass="LocationViewController" customModule="rnm_challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LocationViewController" id="dVH-dl-R7h" customClass="LocationViewController" customModule="rnm_challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vZC-Yg-1Lk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -354,7 +354,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xlu-Ld-DmJ"/>
         <segue reference="oer-QY-30E"/>
     </inferredMetricsTieBreakers>
 </document>

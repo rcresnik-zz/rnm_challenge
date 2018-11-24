@@ -9,10 +9,10 @@
 import UIKit
 
 class CharactersTableViewController: UITableViewController {
-    static let nibName = "CharactersViewController"
+    static let identifier = "CharactersViewController"
+
     var dataSource = CharacterTableViewDataSource()
     var isLoading = false
-    var selectedItem: CharacterProtocol? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +35,11 @@ class CharactersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let ds = tableView.dataSource as? CharacterTableViewDataSource {
             let item = ds.item(for: indexPath)
-            selectedItem = item
 
-            performSegue(withIdentifier: SegueIdentifiers.characterDetails, sender: self)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: CharacterViewController.identifier)
+            (controller as? CharacterViewController)?.viewModel = CharacterViewModel(item: item)
+            present(controller, animated: true, completion: nil)
         }
     }
 
@@ -60,14 +62,6 @@ class CharactersTableViewController: UITableViewController {
                     self.tableView.reloadData()
                 }
                 self.isLoading = false
-            }
-        }
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? CharacterViewController {
-            if let item = selectedItem {
-                vc.viewModel = CharacterViewModel(item: item)
             }
         }
     }

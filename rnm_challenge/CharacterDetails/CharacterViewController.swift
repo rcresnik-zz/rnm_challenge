@@ -9,6 +9,8 @@
 import UIKit
 
 class CharacterViewController: UIViewController {
+    static let identifier = "CharacterViewController"
+    
     @IBOutlet weak var profileImageView: UIImageView!
 
     @IBOutlet weak var nameLabel: UILabel!
@@ -41,13 +43,20 @@ class CharacterViewController: UIViewController {
     @IBAction func locationButtonTapped(_ sender: UIButton) {
         sender.isEnabled = false
 
-//        NetworkManager.shared.locationService.location(id: <#T##Int#>) { (location, err) in
-//            if let location = location {
-//
-//            } else {
-//                print(err?.description)
-//            }
-//        }
+        guard let id = viewModel?.originLocationId else { return }
+
+        NetworkManager.shared.locationService.location(id: id) { (location, err) in
+            DispatchQueue.main.async {
+                if let location = location {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let controller = storyboard.instantiateViewController(withIdentifier: LocationViewController.identifier)
+                    (controller as? LocationViewController)?.viewModel = LocationViewModel(item: location)
+                    self.present(controller, animated: true, completion: nil)
+                } else {
+                    print(err?.description)
+                }
+            }
+        }
     }
 
 }

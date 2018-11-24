@@ -14,8 +14,15 @@ struct UrlConstants {
         static func all(page: Int) -> String {
             return UrlConstants.baseUrl + "character/?page=\(page)"
         }
+
         static func with(id: Int) -> String {
             return UrlConstants.baseUrl + "character/\(id)"
+        }
+
+        static func with(ids: [Int]) -> String {
+            let idString = ids.map { "\($0)" }.joined(separator: ",")
+
+            return UrlConstants.baseUrl + "character/\(idString)"
         }
     }
 

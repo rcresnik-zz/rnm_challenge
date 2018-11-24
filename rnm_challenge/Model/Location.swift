@@ -19,7 +19,7 @@ struct Location {
     let name: String
     let type: LocationType
     let dimension: String
-    let residents: [URL?]
+    let residents: [String]
 }
 
 extension Location: Decodable {
@@ -48,8 +48,7 @@ extension Location: Decodable {
 
             let dimension = try container.decodeIfPresent(String.self, forKey: .dimension) ?? ""
 
-            let array: [String] = try container.decodeIfPresent([String].self, forKey: .residents) ?? []
-            let residents = array.map { URL(string: $0) }
+            let residents: [String] = try container.decodeIfPresent([String].self, forKey: .residents) ?? []
 
             self.init(id: id,
                       name: name,

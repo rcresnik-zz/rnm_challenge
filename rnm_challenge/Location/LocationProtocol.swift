@@ -13,6 +13,7 @@ protocol LocationProtocol {
     var typeName: String { get }
     var dimensionName: String { get }
     var residentsCount: String { get }
+    var residentIds: [Int] { get }
 }
 
 extension Location: LocationProtocol {
@@ -30,5 +31,10 @@ extension Location: LocationProtocol {
 
     var residentsCount: String {
         return "\(residents.count)"
+    }
+
+    var residentIds: [Int] {
+        let array = residents.map { Int($0.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? -1 }
+        return array.filter { $0 > 0 }
     }
 }

@@ -12,6 +12,7 @@ protocol CharacterProtocol {
     var profileImageUrl: URL? { get }
     var characterName: String { get }
     var originLocation: String? { get }
+    var originLocationId: Int? { get }
     var lastKnownLocation: String { get }
     var lastKnownStatus: String { get }
     
@@ -28,6 +29,10 @@ extension AnimatedCharacter: CharacterProtocol {
 
     var originLocation: String? {
         return origin.name
+    }
+
+    var originLocationId: Int? {
+        return origin.id
     }
 
     var lastKnownLocation: String {
