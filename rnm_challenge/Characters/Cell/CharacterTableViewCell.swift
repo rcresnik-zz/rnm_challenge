@@ -14,28 +14,21 @@ class CharacterTableViewCell: UITableViewCell, ReusableView, NibLoadableView {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var statusLabel: UILabel!
-
 
     func setup(viewModel: CharacterProtocol) {
         if let url = viewModel.profileImageUrl {
             profileImageView.image(from: url)
         }
         nameLabel.text = viewModel.characterName
-        locationLabel.text = viewModel.lastKnownLocation
-        statusLabel.text = viewModel.lastKnownStatus
+        locationLabel.text = viewModel.originLocation
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         profileImageView.layer.masksToBounds = true
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        profileImageView.layer.cornerRadius = profileImageView.frame.height / 2
+        profileImageView.layer.borderWidth = 3
+        profileImageView.layer.borderColor = #colorLiteral(red: 1, green: 0.659891367, blue: 0, alpha: 1)
     }
 
     override func prepareForReuse() {
@@ -43,6 +36,5 @@ class CharacterTableViewCell: UITableViewCell, ReusableView, NibLoadableView {
         profileImageView.image = #imageLiteral(resourceName: "alien")
         nameLabel.text = "<<incognito>>"
         locationLabel.text = "<<unknown location>>"
-        statusLabel.text = "<<unknown>>"
     }
 }

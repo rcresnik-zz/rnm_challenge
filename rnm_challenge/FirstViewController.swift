@@ -9,18 +9,23 @@
 import UIKit
 
 class FirstViewController: UIViewController {
-    var characterComponent: CharacterComponent!
     @IBOutlet weak var containerView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        do {
-            characterComponent = try CharacterComponent(container: containerView)
-        } catch let err as Err {
-            print(err.description)
-        } catch {
-            print(error.localizedDescription)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let controller = storyboard.instantiateViewController(withIdentifier: CharactersTableViewController.identifier) as? CharactersTableViewController
+        else {
+             print("Couldnt load 'CharactersTableViewController' from stroyboard!")
+            return
         }
+        
+        controller.viewModel = CharactersViewModel(items: [])
+        controller.view.frame = view.bounds
+        
+        addChild(controller)
+        view.addSubview(controller.view)
+        controller.didMove(toParent: self)
     }
 }

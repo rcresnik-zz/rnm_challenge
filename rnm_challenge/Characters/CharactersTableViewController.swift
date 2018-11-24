@@ -19,8 +19,6 @@ class CharactersTableViewController: UITableViewController {
         super.viewDidLoad()
 
         tableView.register(CharacterTableViewCell.self)
-        tableView.dataSource = self
-        tableView.delegate = self
 
         isLoading = true
 
@@ -42,7 +40,8 @@ extension CharactersTableViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: CharacterViewController.identifier)
             (controller as? CharacterViewController)?.viewModel = CharacterViewModel(item: item)
-            present(controller, animated: true, completion: nil)
+            self.navigationController?.pushViewController(controller, animated: true)
+//            NavigationManager.navigateFrom(self, to: controller)
         }
     }
 

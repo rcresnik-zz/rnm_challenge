@@ -6,12 +6,20 @@
 //  Copyright © 2018 rok cresnik. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct NavigationManager {
-    struct Navigate {
-        static func toCharacterDetails(character: AnimatedCharacter) {
-            
+    static func navigateFrom(_ from: UIViewController?, to: UIViewController?) {
+        guard let from = from,
+            let to = to
+        else {
+            return
+        }
+
+        if let navigationController = from.parent as? UINavigationController {
+            navigationController.pushViewController(to, animated: true)
+        } else {
+            from.present(to, animated: true, completion: nil)
         }
     }
 }

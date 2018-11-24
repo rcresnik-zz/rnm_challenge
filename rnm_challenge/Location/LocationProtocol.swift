@@ -30,7 +30,7 @@ extension Location: LocationProtocol {
     }
 
     var residentsCount: String {
-        return "\(residents.count)"
+        return "\(residents.count) " + (residents.count == 1 ? "resident" : "residents")
     }
 
     var residentIds: [Int] {

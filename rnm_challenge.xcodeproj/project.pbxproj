@@ -29,13 +29,10 @@
 		CDD9994A21A95471009536A0 /* CharactersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9994921A95471009536A0 /* CharactersTableViewController.swift */; };
 		CDD9994C21A95E94009536A0 /* CharacterCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9994B21A95E94009536A0 /* CharacterCellViewModel.swift */; };
 		CDD9994E21A95ED0009536A0 /* CharacterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9994D21A95ED0009536A0 /* CharacterProtocol.swift */; };
-		CDD9995021A9616D009536A0 /* CharacterTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9994F21A9616D009536A0 /* CharacterTableViewDataSource.swift */; };
-		CDD9995221A962AC009536A0 /* CharacterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9995121A962AC009536A0 /* CharacterComponent.swift */; };
 		CDD9995421A964C0009536A0 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9995321A964C0009536A0 /* UITableView.swift */; };
 		CDD9995821A9665A009536A0 /* CharacterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD9995721A9665A009536A0 /* CharacterTableViewCell.xib */; };
 		CDD9995D21A99817009536A0 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9995C21A99817009536A0 /* CharacterViewController.swift */; };
 		CDD9995F21A99A42009536A0 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9995E21A99A42009536A0 /* NavigationManager.swift */; };
-		CDD9996121A99DFE009536A0 /* SegueIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9996021A99DFE009536A0 /* SegueIdentifiers.swift */; };
 		CDD9996321A9A00B009536A0 /* CharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9996221A9A00B009536A0 /* CharacterViewModel.swift */; };
 		CDD9996521A9ACCA009536A0 /* LocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9996421A9ACCA009536A0 /* LocationTests.swift */; };
 		CDD9996721A9ACEE009536A0 /* locations.js in Resources */ = {isa = PBXBuildFile; fileRef = CDD9996621A9ACEE009536A0 /* locations.js */; };
@@ -83,13 +80,10 @@
 		CDD9994921A95471009536A0 /* CharactersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersTableViewController.swift; sourceTree = "<group>"; };
 		CDD9994B21A95E94009536A0 /* CharacterCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCellViewModel.swift; sourceTree = "<group>"; };
 		CDD9994D21A95ED0009536A0 /* CharacterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterProtocol.swift; sourceTree = "<group>"; };
-		CDD9994F21A9616D009536A0 /* CharacterTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewDataSource.swift; sourceTree = "<group>"; };
-		CDD9995121A962AC009536A0 /* CharacterComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterComponent.swift; sourceTree = "<group>"; };
 		CDD9995321A964C0009536A0 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		CDD9995721A9665A009536A0 /* CharacterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterTableViewCell.xib; sourceTree = "<group>"; };
 		CDD9995C21A99817009536A0 /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
 		CDD9995E21A99A42009536A0 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
-		CDD9996021A99DFE009536A0 /* SegueIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueIdentifiers.swift; sourceTree = "<group>"; };
 		CDD9996221A9A00B009536A0 /* CharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewModel.swift; sourceTree = "<group>"; };
 		CDD9996421A9ACCA009536A0 /* LocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
 		CDD9996621A9ACEE009536A0 /* locations.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = locations.js; sourceTree = "<group>"; };
@@ -157,14 +151,15 @@
 			path = rnm_challenge;
 			sourceTree = "<group>";
 		};
-		CDD9991921A933EF009536A0 /* Views */ = {
+		CDD9991921A933EF009536A0 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				CDD9994D21A95ED0009536A0 /* CharacterProtocol.swift */,
 				CDD9991B21A93423009536A0 /* CharacterTableViewCell.swift */,
 				CDD9995721A9665A009536A0 /* CharacterTableViewCell.xib */,
 				CDD9994B21A95E94009536A0 /* CharacterCellViewModel.swift */,
 			);
-			path = Views;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		CDD9992421A934BA009536A0 /* rnm_challengeTests */ = {
@@ -223,29 +218,17 @@
 			children = (
 				CDD9994621A950D5009536A0 /* UIImageView.swift */,
 				CDD9995321A964C0009536A0 /* UITableView.swift */,
-				CDD9996021A99DFE009536A0 /* SegueIdentifiers.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		CDD9994821A9545A009536A0 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				CDD9994921A95471009536A0 /* CharactersTableViewController.swift */,
-				CDD9994F21A9616D009536A0 /* CharacterTableViewDataSource.swift */,
-				CDD9995121A962AC009536A0 /* CharacterComponent.swift */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		CDD9995921A96924009536A0 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
-				CDD9994D21A95ED0009536A0 /* CharacterProtocol.swift */,
+				CDD9991921A933EF009536A0 /* Cell */,
 				CDD9997321A9C883009536A0 /* CharactersProtocol.swift */,
-				CDD9991921A933EF009536A0 /* Views */,
-				CDD9994821A9545A009536A0 /* ViewControllers */,
 				CDD9997121A9C861009536A0 /* CharactersViewModel.swift */,
+				CDD9994921A95471009536A0 /* CharactersTableViewController.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -384,10 +367,8 @@
 				CDD9996321A9A00B009536A0 /* CharacterViewModel.swift in Sources */,
 				CDD9996E21A9B303009536A0 /* LocationViewModel.swift in Sources */,
 				CDD9995421A964C0009536A0 /* UITableView.swift in Sources */,
-				CDD9995021A9616D009536A0 /* CharacterTableViewDataSource.swift in Sources */,
 				CDD9994221A94845009536A0 /* UrlConstants.swift in Sources */,
 				CDD9993B21A93E1A009536A0 /* NetworkObject.swift in Sources */,
-				CDD9995221A962AC009536A0 /* CharacterComponent.swift in Sources */,
 				CDD9996C21A9B2F6009536A0 /* LocationViewController.swift in Sources */,
 				CDD9993421A93544009536A0 /* AnimatedCharacter.swift in Sources */,
 				CDD9997421A9C883009536A0 /* CharactersProtocol.swift in Sources */,
@@ -398,7 +379,6 @@
 				CDD9994C21A95E94009536A0 /* CharacterCellViewModel.swift in Sources */,
 				CDD9993621A93A16009536A0 /* Location.swift in Sources */,
 				CDD9995D21A99817009536A0 /* CharacterViewController.swift in Sources */,
-				CDD9996121A99DFE009536A0 /* SegueIdentifiers.swift in Sources */,
 				CDD9991D21A93423009536A0 /* CharacterTableViewCell.swift in Sources */,
 				CDD9994A21A95471009536A0 /* CharactersTableViewController.swift in Sources */,
 			);

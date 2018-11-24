@@ -11,21 +11,21 @@ import Foundation
 struct CharacterViewModel: CharacterProtocol {
     var profileImageUrl: URL?
     var characterName: String
-    var originLocation: String?
-    var originLocationId: Int?
+
+    var originLocation: String
+    var originLocationId: Int
+    
     var lastKnownLocation: String
-    var lastKnownStatus: String
-    var name: String
-    var imageURL: URL?
+    var lastKnownLocationId: Int
 
     init(item: CharacterProtocol) {
         self.profileImageUrl = item.profileImageUrl
         self.characterName = item.characterName
-        self.originLocation = item.originLocation ?? "unknown"
-        self.lastKnownLocation = item.lastKnownLocation
-        self.lastKnownStatus = item.lastKnownStatus
-        self.name = item.characterName
-        self.imageURL = item.profileImageUrl
+
+        self.originLocation = item.originLocation
         self.originLocationId = item.originLocationId
+
+        self.lastKnownLocation = item.lastKnownLocation
+        self.lastKnownLocationId = item.lastKnownLocationId
     }
 }

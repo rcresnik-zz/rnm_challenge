@@ -14,7 +14,6 @@ protocol ReusableView: class {
 
 extension ReusableView where Self: UIView {
     static var defaultReuseIdentifier: String {
-        print("ReuseIdentifier: \(NSStringFromClass(self))")
         return NSStringFromClass(self)
     }
 }
@@ -26,7 +25,6 @@ protocol NibLoadableView: class {
 extension NibLoadableView where Self: UITableViewCell {
     static var nibName: String {
         let nibName = NSStringFromClass(self).components(separatedBy: ".").last!
-        print("Using NibName: \(nibName)")
         return nibName
     }
 }
@@ -50,7 +48,6 @@ extension UITableView {
 
     func selectedCell<T: UITableViewCell>() -> T? where T: ReusableView {
         guard let selectedIndexPath = self.indexPathForSelectedRow, let cell = self.cellForRow(at: selectedIndexPath) as? T else {
-            print("Could not find selected cell in tableView.")
             return nil
         }
 

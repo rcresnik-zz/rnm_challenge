@@ -26,16 +26,17 @@ class LocationViewController: UIViewController {
     }
 
     func setup() {
-        nameLabel.text = viewModel?.locationName
-        typeLabel.text = viewModel?.typeName
-        dimensionLabel.text = viewModel?.dimensionName
-        residentCountLabel.text = viewModel?.residentsCount
+        guard let viewModel = viewModel else { return }
+
+        nameLabel.text = viewModel.locationName
+        typeLabel.text = viewModel.typeName
+        dimensionLabel.text = viewModel.dimensionName
+
+        let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+                                                          NSAttributedString.Key.underlineColor: nameLabel.textColor]
+        residentCountLabel.attributedText = NSAttributedString(string: viewModel.residentsCount, attributes: attributes)
 
         if let view = residentCountLabel.superview {
-            view.layer.cornerRadius = 5
-            view.layer.borderColor = #colorLiteral(red: 1, green: 0.659891367, blue: 0, alpha: 1)
-            view.layer.borderWidth = 1
-
             let gesture = UITapGestureRecognizer(target: self, action: #selector(self.residentsViewTapped(sender:)))
             view.addGestureRecognizer(gesture)
         }
@@ -54,7 +55,8 @@ class LocationViewController: UIViewController {
                         return
                     }
                     controller.viewModel = CharactersViewModel(items: characters)
-                    self.present(controller, animated: true, completion: nil)
+                    self.navigationController?.pushViewController(controller, animated: true)
+//                    NavigationManager.navigateFrom(self, to: controller)
                 }
             }
         }
