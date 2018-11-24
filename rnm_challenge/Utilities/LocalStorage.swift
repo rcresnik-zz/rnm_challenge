@@ -32,6 +32,10 @@ struct LocalStorage {
         UserDefaults.standard.set(favorites, forKey: LocalStorage.Keys.favorite)
     }
 
+    static func removeAllFavorites() {
+        UserDefaults.standard.removeObject(forKey: LocalStorage.Keys.favorite)
+    }
+
     static func isFavorite(id: Int) -> Bool {
         let favorites = UserDefaults.standard.array(forKey: LocalStorage.Keys.favorite) as? [Int] ?? []
 

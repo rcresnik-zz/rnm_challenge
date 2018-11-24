@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CD8CDE3221A9F1680019A44E /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8CDE3121A9F1680019A44E /* LocalStorage.swift */; };
+		CD8CDE3621AA0CF70019A44E /* LocalStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8CDE3521AA0CF70019A44E /* LocalStorageTests.swift */; };
 		CDD9990621A931E1009536A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9990521A931E1009536A0 /* AppDelegate.swift */; };
 		CDD9990821A931E1009536A0 /* RickAndMortyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9990721A931E1009536A0 /* RickAndMortyViewController.swift */; };
 		CDD9990A21A931E1009536A0 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9990921A931E1009536A0 /* FavoritesViewController.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		CD8CDE3121A9F1680019A44E /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		CD8CDE3521AA0CF70019A44E /* LocalStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageTests.swift; sourceTree = "<group>"; };
 		CDD9990221A931E1009536A0 /* rnm_challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rnm_challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD9990521A931E1009536A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDD9990721A931E1009536A0 /* RickAndMortyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CD8CDE3721AA0D080019A44E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				CD8CDE3521AA0CF70019A44E /* LocalStorageTests.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		CDD998F921A931E1009536A0 = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +177,7 @@
 		CDD9992421A934BA009536A0 /* rnm_challengeTests */ = {
 			isa = PBXGroup;
 			children = (
+				CD8CDE3721AA0D080019A44E /* Utilities */,
 				CDD9993721A93B10009536A0 /* Model */,
 				CDD9992D21A934BF009536A0 /* Mocks */,
 				CDD9992521A934BA009536A0 /* rnm_challengeTests.swift */,
@@ -393,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDD9992621A934BA009536A0 /* rnm_challengeTests.swift in Sources */,
+				CD8CDE3621AA0CF70019A44E /* LocalStorageTests.swift in Sources */,
 				CDD9996521A9ACCA009536A0 /* LocationTests.swift in Sources */,
 				CDD9993921A93B24009536A0 /* AnimatedCharacterTests.swift in Sources */,
 			);
