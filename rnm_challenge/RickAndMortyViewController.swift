@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class RickAndMortyViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
 
     override func viewDidLoad() {

@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		CD8CDE3221A9F1680019A44E /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8CDE3121A9F1680019A44E /* LocalStorage.swift */; };
 		CDD9990621A931E1009536A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9990521A931E1009536A0 /* AppDelegate.swift */; };
-		CDD9990821A931E1009536A0 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9990721A931E1009536A0 /* FirstViewController.swift */; };
-		CDD9990A21A931E1009536A0 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9990921A931E1009536A0 /* SecondViewController.swift */; };
+		CDD9990821A931E1009536A0 /* RickAndMortyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9990721A931E1009536A0 /* RickAndMortyViewController.swift */; };
+		CDD9990A21A931E1009536A0 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9990921A931E1009536A0 /* FavoritesViewController.swift */; };
 		CDD9990D21A931E1009536A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDD9990B21A931E1009536A0 /* Main.storyboard */; };
 		CDD9990F21A931E1009536A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDD9990E21A931E1009536A0 /* Assets.xcassets */; };
 		CDD9991221A931E1009536A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDD9991021A931E1009536A0 /* LaunchScreen.storyboard */; };
@@ -58,8 +58,8 @@
 		CD8CDE3121A9F1680019A44E /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		CDD9990221A931E1009536A0 /* rnm_challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rnm_challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD9990521A931E1009536A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CDD9990721A931E1009536A0 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		CDD9990921A931E1009536A0 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		CDD9990721A931E1009536A0 /* RickAndMortyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyViewController.swift; sourceTree = "<group>"; };
+		CDD9990921A931E1009536A0 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		CDD9990C21A931E1009536A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CDD9990E21A931E1009536A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDD9991121A931E1009536A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -143,8 +143,8 @@
 				CDD9996921A9B2A8009536A0 /* CharacterDetails */,
 				CDD9996A21A9B2B7009536A0 /* Location */,
 				CDD9990521A931E1009536A0 /* AppDelegate.swift */,
-				CDD9990721A931E1009536A0 /* FirstViewController.swift */,
-				CDD9990921A931E1009536A0 /* SecondViewController.swift */,
+				CDD9990721A931E1009536A0 /* RickAndMortyViewController.swift */,
+				CDD9990921A931E1009536A0 /* FavoritesViewController.swift */,
 				CDD9990B21A931E1009536A0 /* Main.storyboard */,
 				CDD9990E21A931E1009536A0 /* Assets.xcassets */,
 				CDD9991021A931E1009536A0 /* LaunchScreen.storyboard */,
@@ -360,7 +360,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDD9990A21A931E1009536A0 /* SecondViewController.swift in Sources */,
+				CDD9990A21A931E1009536A0 /* FavoritesViewController.swift in Sources */,
 				CDD9995F21A99A42009536A0 /* NavigationManager.swift in Sources */,
 				CDD9993D21A94171009536A0 /* Info.swift in Sources */,
 				CDD9990621A931E1009536A0 /* AppDelegate.swift in Sources */,
@@ -375,7 +375,7 @@
 				CDD9996C21A9B2F6009536A0 /* LocationViewController.swift in Sources */,
 				CDD9993421A93544009536A0 /* AnimatedCharacter.swift in Sources */,
 				CDD9997421A9C883009536A0 /* CharactersProtocol.swift in Sources */,
-				CDD9990821A931E1009536A0 /* FirstViewController.swift in Sources */,
+				CDD9990821A931E1009536A0 /* RickAndMortyViewController.swift in Sources */,
 				CD8CDE3221A9F1680019A44E /* LocalStorage.swift in Sources */,
 				CDD9994421A94C9A009536A0 /* NetworkManager.swift in Sources */,
 				CDD9997221A9C861009536A0 /* CharactersViewModel.swift in Sources */,

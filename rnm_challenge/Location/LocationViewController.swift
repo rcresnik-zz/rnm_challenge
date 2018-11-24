@@ -22,6 +22,7 @@ class LocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Location"
         setup()
     }
 
@@ -54,7 +55,7 @@ class LocationViewController: UIViewController {
                     guard let controller = storyboard.instantiateViewController(withIdentifier: CharactersTableViewController.identifier) as? CharactersTableViewController else {
                         return
                     }
-                    controller.viewModel = CharactersViewModel(items: characters)
+                    controller.viewModel = CharactersViewModel(items: characters, canFetch: false)
                     self.navigationController?.pushViewController(controller, animated: true)
                 }
             }

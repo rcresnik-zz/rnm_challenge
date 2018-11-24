@@ -10,14 +10,12 @@ import Foundation
 
 class CharactersViewModel {
     var characters: [CharacterProtocol] = []
-    private var currentPage: Int = 1
-    private var canFetch: Bool = true
+    var pageNumber: Int = 1
+    var canFetch: Bool 
 
-    init(items: [CharacterProtocol]) {
+    init(items: [CharacterProtocol], canFetch: Bool = true) {
         self.characters = items
-        if items.count > 0 {
-            self.canFetch = false
-        }
+        self.canFetch = canFetch
     }
 
     func addMore(characters: [CharacterProtocol]) {
@@ -27,7 +25,7 @@ class CharactersViewModel {
     func fetchData(completion: @escaping ((Err?) -> Void)) {
         guard canFetch == true else { return }
         
-        NetworkManager.shared.characterService.all(page: currentPage) { (characters, err) in
+        NetworkManager.shared.characterService.all(page: pageNumber) { (characters, err) in
             DispatchQueue.main.async() {
                 if let err = err {
                     print(err.description)
@@ -41,7 +39,18 @@ class CharactersViewModel {
     }
 
     func fetchMore(completion: @escaping ((Err?) -> Void)) {
-        currentPage += 1
+        pageNumber += 1
         fetchData(completion: completion)
+    }
+
+    func removeFavoriteCharacter(index: Int) {
+        let id = characters[index].characterId
+        LocalStorage.removeFavorite(id: id)
+
+        characters.remove(at: index)
+    }
+
+    func resetCharacters(items: [CharacterProtocol]) {
+        characters = items
     }
 }

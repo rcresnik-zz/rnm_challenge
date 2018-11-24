@@ -10,4 +10,6 @@ import Foundation
 
 protocol CharactersProtocol {
     var characters: [CharacterProtocol] { get set }
+    var canFetch: Bool { get }
+    var pageNumber: Int { get set }
 }

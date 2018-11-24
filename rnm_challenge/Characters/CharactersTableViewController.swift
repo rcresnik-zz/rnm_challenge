@@ -11,8 +11,7 @@ import UIKit
 class CharactersTableViewController: UITableViewController {
     static let identifier = "CharactersViewController"
     var viewModel: CharactersViewModel?
-
-//    var dataSource = CharacterTableViewDataSource()
+    var canEdit = false
     var isLoading = false
 
     override func viewDidLoad() {
@@ -31,6 +30,11 @@ class CharactersTableViewController: UITableViewController {
             self.isLoading = false
         })
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
 }
 
 // TableViewDelegate
@@ -41,7 +45,6 @@ extension CharactersTableViewController {
             let controller = storyboard.instantiateViewController(withIdentifier: CharacterViewController.identifier)
             (controller as? CharacterViewController)?.viewModel = CharacterViewModel(item: item)
             self.navigationController?.pushViewController(controller, animated: true)
-//            NavigationManager.navigateFrom(self, to: controller)
         }
     }
 
@@ -67,6 +70,18 @@ extension CharactersTableViewController {
                 }
                 self.isLoading = false
             }
+        }
+    }
+
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return canEdit
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete,
+            let viewModel = viewModel {
+            viewModel.removeFavoriteCharacter(index: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 }
