@@ -22,6 +22,12 @@ extension UIImageView {
             }
             DispatchQueue.main.async() {
                 self.image = image
+
+                UIView.transition(with: self,
+                                  duration: 0.75,
+                                  options: .transitionCrossDissolve,
+                                  animations: { self.image = image },
+                                  completion: nil)
             }
             }.resume()
     }
