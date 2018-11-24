@@ -47,9 +47,9 @@
         <!--Characters Table View Controller-->
         <scene sceneID="ZN8-uv-Frl">
             <objects>
-                <tableViewController storyboardIdentifier="CharactersTableViewController" id="cqw-Qr-IDB" customClass="CharactersTableViewController" customModule="rnm_challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CharactersViewController" id="cqw-Qr-IDB" customClass="CharactersTableViewController" customModule="rnm_challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RXR-BD-stm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -354,6 +354,7 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="O1c-HQ-5HA"/>
         <segue reference="oer-QY-30E"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -15,7 +15,6 @@ protocol CharacterProtocol {
     var originLocationId: Int? { get }
     var lastKnownLocation: String { get }
     var lastKnownStatus: String { get }
-    
 }
 
 extension AnimatedCharacter: CharacterProtocol {

@@ -47,11 +47,13 @@ class LocationViewController: UIViewController {
         NetworkManager.shared.characterService.with(ids: ids) { (characters, err) in
             if let err = err {
                 print(err.description)
-            } else {
+            } else if let characters = characters {
                 DispatchQueue.main.async() {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: CharactersTableViewController.identifier)
-                    //        (controller as? CharactersTableViewController)?.viewModel = CharacterViewModel(item: item)
+                    guard let controller = storyboard.instantiateViewController(withIdentifier: CharactersTableViewController.identifier) as? CharactersTableViewController else {
+                        return
+                    }
+                    controller.viewModel = CharactersViewModel(items: characters)
                     self.present(controller, animated: true, completion: nil)
                 }
             }

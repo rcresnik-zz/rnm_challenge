@@ -10,32 +10,35 @@ import UIKit
 
 class CharactersTableViewController: UITableViewController {
     static let identifier = "CharactersViewController"
+    var viewModel: CharactersViewModel?
 
-    var dataSource = CharacterTableViewDataSource()
+//    var dataSource = CharacterTableViewDataSource()
     var isLoading = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(CharacterTableViewCell.self)
-        tableView.dataSource = self.dataSource
+        tableView.dataSource = self
         tableView.delegate = self
 
         isLoading = true
-        dataSource.fetchData { (section, err) in
+
+        viewModel?.fetchData(completion: { (err) in
             if let err = err {
                 print(err.description)
             } else {
                 self.tableView.reloadData()
             }
             self.isLoading = false
-        }
+        })
     }
+}
 
+// TableViewDelegate
+extension CharactersTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let ds = tableView.dataSource as? CharacterTableViewDataSource {
-            let item = ds.item(for: indexPath)
-
+        if let item = viewModel?.characters[indexPath.row] {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: CharacterViewController.identifier)
             (controller as? CharacterViewController)?.viewModel = CharacterViewModel(item: item)
@@ -48,14 +51,16 @@ class CharactersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if isLoading {
+        guard isLoading == false,
+            let count = viewModel?.characters.count
+        else {
             return
         }
 
-        if indexPath.section == dataSource.items.count - 1 {
+        if indexPath.row == count - 10 {
             isLoading = true
             
-            dataSource.fetchMore { (section, err) in
+            viewModel?.fetchMore { (err) in
                 if let err = err {
                     print(err.description)
                 } else {
@@ -64,5 +69,30 @@ class CharactersTableViewController: UITableViewController {
                 self.isLoading = false
             }
         }
+    }
+}
+
+// UITableViewDataSource
+extension CharactersTableViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let count = viewModel?.characters.count else {
+            return 0
+        }
+        return count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: CharacterTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+
+        if let item = viewModel?.characters[indexPath.row] {
+            let viewModel = CharacterCellViewModel(item: item)
+            cell.setup(viewModel: viewModel)
+        }
+
+        return cell
     }
 }

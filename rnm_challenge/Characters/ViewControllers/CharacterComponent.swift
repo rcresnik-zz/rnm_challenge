@@ -21,11 +21,11 @@ class CharacterComponent {
         self.init()
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let controller = storyboard.instantiateViewController(withIdentifier: "CharactersTableViewController") as? CharactersTableViewController
+        guard let controller = storyboard.instantiateViewController(withIdentifier: CharactersTableViewController.identifier) as? CharactersTableViewController
         else {
             throw Err(description: "Couldnt load 'CharactersTableViewController' from stroyboard!")
         }
-
+        controller.viewModel = CharactersViewModel(items: [])
         viewController = controller
         viewController.view.frame = container.frame
 

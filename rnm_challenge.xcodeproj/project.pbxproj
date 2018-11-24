@@ -42,6 +42,8 @@
 		CDD9996C21A9B2F6009536A0 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9996B21A9B2F6009536A0 /* LocationViewController.swift */; };
 		CDD9996E21A9B303009536A0 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9996D21A9B303009536A0 /* LocationViewModel.swift */; };
 		CDD9997021A9B401009536A0 /* LocationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9996F21A9B401009536A0 /* LocationProtocol.swift */; };
+		CDD9997221A9C861009536A0 /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9997121A9C861009536A0 /* CharactersViewModel.swift */; };
+		CDD9997421A9C883009536A0 /* CharactersProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9997321A9C883009536A0 /* CharactersProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,8 @@
 		CDD9996B21A9B2F6009536A0 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		CDD9996D21A9B303009536A0 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		CDD9996F21A9B401009536A0 /* LocationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProtocol.swift; sourceTree = "<group>"; };
+		CDD9997121A9C861009536A0 /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
+		CDD9997321A9C883009536A0 /* CharactersProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,8 +242,10 @@
 			isa = PBXGroup;
 			children = (
 				CDD9994D21A95ED0009536A0 /* CharacterProtocol.swift */,
+				CDD9997321A9C883009536A0 /* CharactersProtocol.swift */,
 				CDD9991921A933EF009536A0 /* Views */,
 				CDD9994821A9545A009536A0 /* ViewControllers */,
+				CDD9997121A9C861009536A0 /* CharactersViewModel.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -384,8 +390,10 @@
 				CDD9995221A962AC009536A0 /* CharacterComponent.swift in Sources */,
 				CDD9996C21A9B2F6009536A0 /* LocationViewController.swift in Sources */,
 				CDD9993421A93544009536A0 /* AnimatedCharacter.swift in Sources */,
+				CDD9997421A9C883009536A0 /* CharactersProtocol.swift in Sources */,
 				CDD9990821A931E1009536A0 /* FirstViewController.swift in Sources */,
 				CDD9994421A94C9A009536A0 /* NetworkManager.swift in Sources */,
+				CDD9997221A9C861009536A0 /* CharactersViewModel.swift in Sources */,
 				CDD9994721A950D5009536A0 /* UIImageView.swift in Sources */,
 				CDD9994C21A95E94009536A0 /* CharacterCellViewModel.swift in Sources */,
 				CDD9993621A93A16009536A0 /* Location.swift in Sources */,

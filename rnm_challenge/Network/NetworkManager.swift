@@ -67,8 +67,8 @@ class CharacterService {
         let task = URLSession.shared.dataTask(with: getRequest) { (data, response, error) in
             if let data = data {
                 do {
-                    let results = try JSONDecoder().decode(NetworkObject<AnimatedCharacter>.self, from: data).results
-                    completion(results, nil)
+                    let characters = try JSONDecoder().decode([AnimatedCharacter].self, from: data)
+                    completion(characters, nil)
                 } catch let err as Err {
                     completion([], err)
                 } catch {
