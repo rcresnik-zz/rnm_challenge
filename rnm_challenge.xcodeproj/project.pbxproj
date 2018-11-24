@@ -13,7 +13,28 @@
 		CDD9990D21A931E1009536A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDD9990B21A931E1009536A0 /* Main.storyboard */; };
 		CDD9990F21A931E1009536A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDD9990E21A931E1009536A0 /* Assets.xcassets */; };
 		CDD9991221A931E1009536A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDD9991021A931E1009536A0 /* LaunchScreen.storyboard */; };
+		CDD9991D21A93423009536A0 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9991B21A93423009536A0 /* CharacterTableViewCell.swift */; };
+		CDD9991E21A93423009536A0 /* CharacterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD9991C21A93423009536A0 /* CharacterTableViewCell.xib */; };
+		CDD9992621A934BA009536A0 /* rnm_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9992521A934BA009536A0 /* rnm_challengeTests.swift */; };
+		CDD9992F21A934E1009536A0 /* characters.js in Resources */ = {isa = PBXBuildFile; fileRef = CDD9992E21A934E1009536A0 /* characters.js */; };
+		CDD9993121A93512009536A0 /* character.js in Resources */ = {isa = PBXBuildFile; fileRef = CDD9993021A93512009536A0 /* character.js */; };
+		CDD9993421A93544009536A0 /* AinmatedCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9993321A93544009536A0 /* AinmatedCharacter.swift */; };
+		CDD9993621A93A16009536A0 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9993521A93A16009536A0 /* Location.swift */; };
+		CDD9993921A93B24009536A0 /* AinmatedCharacterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9993821A93B24009536A0 /* AinmatedCharacterTests.swift */; };
+		CDD9993B21A93E1A009536A0 /* NetworkObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9993A21A93E1A009536A0 /* NetworkObject.swift */; };
+		CDD9993D21A94171009536A0 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9993C21A94171009536A0 /* Info.swift */; };
+		CDD9993F21A942CD009536A0 /* Err.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9993E21A942CD009536A0 /* Err.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CDD9992821A934BA009536A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDD998FA21A931E1009536A0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CDD9990121A931E1009536A0;
+			remoteInfo = rnm_challenge;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		CDD9990221A931E1009536A0 /* rnm_challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rnm_challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,10 +45,30 @@
 		CDD9990E21A931E1009536A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDD9991121A931E1009536A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CDD9991321A931E1009536A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDD9991B21A93423009536A0 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
+		CDD9991C21A93423009536A0 /* CharacterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterTableViewCell.xib; sourceTree = "<group>"; };
+		CDD9992321A934BA009536A0 /* rnm_challengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rnm_challengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDD9992521A934BA009536A0 /* rnm_challengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rnm_challengeTests.swift; sourceTree = "<group>"; };
+		CDD9992721A934BA009536A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDD9992E21A934E1009536A0 /* characters.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = characters.js; sourceTree = "<group>"; };
+		CDD9993021A93512009536A0 /* character.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = character.js; sourceTree = "<group>"; };
+		CDD9993321A93544009536A0 /* AinmatedCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AinmatedCharacter.swift; sourceTree = "<group>"; };
+		CDD9993521A93A16009536A0 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		CDD9993821A93B24009536A0 /* AinmatedCharacterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AinmatedCharacterTests.swift; sourceTree = "<group>"; };
+		CDD9993A21A93E1A009536A0 /* NetworkObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkObject.swift; sourceTree = "<group>"; };
+		CDD9993C21A94171009536A0 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+		CDD9993E21A942CD009536A0 /* Err.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Err.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CDD998FF21A931E1009536A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDD9992021A934BA009536A0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -41,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				CDD9990421A931E1009536A0 /* rnm_challenge */,
+				CDD9992421A934BA009536A0 /* rnm_challengeTests */,
 				CDD9990321A931E1009536A0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				CDD9990221A931E1009536A0 /* rnm_challenge.app */,
+				CDD9992321A934BA009536A0 /* rnm_challengeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,6 +99,8 @@
 		CDD9990421A931E1009536A0 /* rnm_challenge */ = {
 			isa = PBXGroup;
 			children = (
+				CDD9993221A93533009536A0 /* Model */,
+				CDD9991921A933EF009536A0 /* Cells */,
 				CDD9990521A931E1009536A0 /* AppDelegate.swift */,
 				CDD9990721A931E1009536A0 /* FirstViewController.swift */,
 				CDD9990921A931E1009536A0 /* SecondViewController.swift */,
@@ -65,6 +110,55 @@
 				CDD9991321A931E1009536A0 /* Info.plist */,
 			);
 			path = rnm_challenge;
+			sourceTree = "<group>";
+		};
+		CDD9991921A933EF009536A0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CDD9991B21A93423009536A0 /* CharacterTableViewCell.swift */,
+				CDD9991C21A93423009536A0 /* CharacterTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		CDD9992421A934BA009536A0 /* rnm_challengeTests */ = {
+			isa = PBXGroup;
+			children = (
+				CDD9993721A93B10009536A0 /* Model */,
+				CDD9992D21A934BF009536A0 /* Mocks */,
+				CDD9992521A934BA009536A0 /* rnm_challengeTests.swift */,
+				CDD9992721A934BA009536A0 /* Info.plist */,
+			);
+			path = rnm_challengeTests;
+			sourceTree = "<group>";
+		};
+		CDD9992D21A934BF009536A0 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				CDD9992E21A934E1009536A0 /* characters.js */,
+				CDD9993021A93512009536A0 /* character.js */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		CDD9993221A93533009536A0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CDD9993321A93544009536A0 /* AinmatedCharacter.swift */,
+				CDD9993521A93A16009536A0 /* Location.swift */,
+				CDD9993A21A93E1A009536A0 /* NetworkObject.swift */,
+				CDD9993C21A94171009536A0 /* Info.swift */,
+				CDD9993E21A942CD009536A0 /* Err.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CDD9993721A93B10009536A0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CDD9993821A93B24009536A0 /* AinmatedCharacterTests.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -87,6 +181,24 @@
 			productReference = CDD9990221A931E1009536A0 /* rnm_challenge.app */;
 			productType = "com.apple.product-type.application";
 		};
+		CDD9992221A934BA009536A0 /* rnm_challengeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDD9992A21A934BA009536A0 /* Build configuration list for PBXNativeTarget "rnm_challengeTests" */;
+			buildPhases = (
+				CDD9991F21A934BA009536A0 /* Sources */,
+				CDD9992021A934BA009536A0 /* Frameworks */,
+				CDD9992121A934BA009536A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CDD9992921A934BA009536A0 /* PBXTargetDependency */,
+			);
+			name = rnm_challengeTests;
+			productName = rnm_challengeTests;
+			productReference = CDD9992321A934BA009536A0 /* rnm_challengeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -99,6 +211,10 @@
 				TargetAttributes = {
 					CDD9990121A931E1009536A0 = {
 						CreatedOnToolsVersion = 10.1;
+					};
+					CDD9992221A934BA009536A0 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = CDD9990121A931E1009536A0;
 					};
 				};
 			};
@@ -116,6 +232,7 @@
 			projectRoot = "";
 			targets = (
 				CDD9990121A931E1009536A0 /* rnm_challenge */,
+				CDD9992221A934BA009536A0 /* rnm_challengeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -128,6 +245,16 @@
 				CDD9991221A931E1009536A0 /* LaunchScreen.storyboard in Resources */,
 				CDD9990F21A931E1009536A0 /* Assets.xcassets in Resources */,
 				CDD9990D21A931E1009536A0 /* Main.storyboard in Resources */,
+				CDD9991E21A93423009536A0 /* CharacterTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDD9992121A934BA009536A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDD9993121A93512009536A0 /* character.js in Resources */,
+				CDD9992F21A934E1009536A0 /* characters.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,12 +266,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDD9990A21A931E1009536A0 /* SecondViewController.swift in Sources */,
+				CDD9993D21A94171009536A0 /* Info.swift in Sources */,
 				CDD9990621A931E1009536A0 /* AppDelegate.swift in Sources */,
+				CDD9993F21A942CD009536A0 /* Err.swift in Sources */,
+				CDD9993B21A93E1A009536A0 /* NetworkObject.swift in Sources */,
+				CDD9993421A93544009536A0 /* AinmatedCharacter.swift in Sources */,
 				CDD9990821A931E1009536A0 /* FirstViewController.swift in Sources */,
+				CDD9993621A93A16009536A0 /* Location.swift in Sources */,
+				CDD9991D21A93423009536A0 /* CharacterTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDD9991F21A934BA009536A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDD9992621A934BA009536A0 /* rnm_challengeTests.swift in Sources */,
+				CDD9993921A93B24009536A0 /* AinmatedCharacterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CDD9992921A934BA009536A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CDD9990121A931E1009536A0 /* rnm_challenge */;
+			targetProxy = CDD9992821A934BA009536A0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CDD9990B21A931E1009536A0 /* Main.storyboard */ = {
@@ -318,6 +468,46 @@
 			};
 			name = Release;
 		};
+		CDD9992B21A934BA009536A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RYF66PLFSQ;
+				INFOPLIST_FILE = rnm_challengeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cresnik.rnm-challengeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rnm_challenge.app/rnm_challenge";
+			};
+			name = Debug;
+		};
+		CDD9992C21A934BA009536A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RYF66PLFSQ;
+				INFOPLIST_FILE = rnm_challengeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cresnik.rnm-challengeTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/rnm_challenge.app/rnm_challenge";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -335,6 +525,15 @@
 			buildConfigurations = (
 				CDD9991721A931E1009536A0 /* Debug */,
 				CDD9991821A931E1009536A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDD9992A21A934BA009536A0 /* Build configuration list for PBXNativeTarget "rnm_challengeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDD9992B21A934BA009536A0 /* Debug */,
+				CDD9992C21A934BA009536A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
