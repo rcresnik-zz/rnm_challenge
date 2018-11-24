@@ -39,6 +39,16 @@
                ReferencedContainer = "container:rnm_challenge.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "CD8CDE3E21AA12230019A44E"
+               BuildableName = "rnm_challengeUITests.xctest"
+               BlueprintName = "rnm_challengeUITests"
+               ReferencedContainer = "container:rnm_challenge.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

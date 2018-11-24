@@ -186,12 +186,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rnm_challenge/Utilities/LocalStorage.swift"
-            timestampString = "564793029.534263"
+            timestampString = "564794208.96956"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
             endingLineNumber = "46"
             landmarkName = "toggleFavorite(id:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            condition = "count == 20"
+            continueAfterRunningActions = "No"
+            filePath = "rnm_challenge/Characters/CharactersTableViewController.swift"
+            timestampString = "564794405.6702189"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
