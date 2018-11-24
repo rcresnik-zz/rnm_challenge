@@ -56,7 +56,6 @@ class LocationViewController: UIViewController {
                     }
                     controller.viewModel = CharactersViewModel(items: characters)
                     self.navigationController?.pushViewController(controller, animated: true)
-//                    NavigationManager.navigateFrom(self, to: controller)
                 }
             }
         }

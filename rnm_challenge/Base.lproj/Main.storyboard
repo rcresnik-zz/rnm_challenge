@@ -32,7 +32,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="CharactersViewController" id="cqw-Qr-IDB" customClass="CharactersTableViewController" customModule="rnm_challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RXR-BD-stm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -69,7 +69,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pE2-R6-SKj">
-                                <rect key="frame" x="0.0" y="146" width="375" height="331"/>
+                                <rect key="frame" x="0.0" y="121" width="375" height="381"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="alien" translatesAutoresizingMaskIntoConstraints="NO" id="cpk-TQ-ppm">
                                         <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
@@ -130,9 +130,20 @@
                                             </label>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Glq-0d-w2h">
+                                        <rect key="frame" x="5" y="351" width="365" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.59607843140000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Add to favorites">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="favoriteButtonTapped:" destination="0LB-Mp-YEK" eventType="touchUpInside" id="WbW-lc-cHj"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="WSc-gE-blb" firstAttribute="leading" secondItem="pE2-R6-SKj" secondAttribute="leading" constant="5" id="S6K-uh-rqz"/>
+                                    <constraint firstItem="Glq-0d-w2h" firstAttribute="leading" secondItem="pE2-R6-SKj" secondAttribute="leading" constant="5" id="asq-nx-FKJ"/>
                                     <constraint firstItem="iwg-No-yMf" firstAttribute="centerX" secondItem="pE2-R6-SKj" secondAttribute="centerX" id="fb6-QN-Nd5"/>
                                     <constraint firstItem="WSc-gE-blb" firstAttribute="centerX" secondItem="pE2-R6-SKj" secondAttribute="centerX" id="gZw-WJ-f4x"/>
                                     <constraint firstItem="iwg-No-yMf" firstAttribute="leading" secondItem="pE2-R6-SKj" secondAttribute="leading" constant="5" id="gfC-fc-S4J"/>
@@ -153,6 +164,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="favoritesButton" destination="Glq-0d-w2h" id="hjQ-Ru-CGg"/>
                         <outlet property="locationLabel" destination="jSr-2F-Wc3" id="Btn-K3-71E"/>
                         <outlet property="nameLabel" destination="Xrs-ok-SON" id="Obv-V9-3Er"/>
                         <outlet property="originLabel" destination="1WH-CV-lCr" id="4AN-e0-Mr1"/>
@@ -352,6 +364,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="oer-QY-30E"/>
+        <segue reference="xlu-Ld-DmJ"/>
     </inferredMetricsTieBreakers>
 </document>

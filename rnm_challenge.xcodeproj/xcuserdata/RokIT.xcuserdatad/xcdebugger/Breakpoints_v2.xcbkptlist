@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "rnm_challenge/CharacterDetails/CharacterViewController.swift"
-            timestampString = "564785167.612823"
+            timestampString = "564788131.615414"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "setup()"
             landmarkType = "7">
          </BreakpointContent>

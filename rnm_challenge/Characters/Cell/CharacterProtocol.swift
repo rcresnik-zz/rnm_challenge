@@ -9,6 +9,7 @@
 import Foundation
 
 protocol CharacterProtocol {
+    var characterId: Int { get }
     var profileImageUrl: URL? { get }
     var characterName: String { get }
     var originLocation: String { get }
@@ -19,6 +20,9 @@ protocol CharacterProtocol {
 }
 
 extension AnimatedCharacter: CharacterProtocol {
+    var characterId: Int {
+        return id
+    }
     var originLocationId: Int {
         return origin.id ?? -1
     }

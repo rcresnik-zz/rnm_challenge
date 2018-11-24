@@ -9,6 +9,7 @@
 import Foundation
 
 struct CharacterViewModel: CharacterProtocol {
+    var characterId: Int
     var profileImageUrl: URL?
     var characterName: String
 
@@ -19,6 +20,7 @@ struct CharacterViewModel: CharacterProtocol {
     var lastKnownLocationId: Int
 
     init(item: CharacterProtocol) {
+        self.characterId = item.characterId
         self.profileImageUrl = item.profileImageUrl
         self.characterName = item.characterName
 
@@ -27,5 +29,9 @@ struct CharacterViewModel: CharacterProtocol {
 
         self.lastKnownLocation = item.lastKnownLocation
         self.lastKnownLocationId = item.lastKnownLocationId
+    }
+
+    func favorite() {
+        
     }
 }

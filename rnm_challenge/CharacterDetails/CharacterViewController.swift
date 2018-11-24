@@ -17,6 +17,8 @@ class CharacterViewController: UIViewController {
     @IBOutlet weak var originLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
 
+    @IBOutlet weak var favoritesButton: UIButton!
+
     var viewModel: CharacterViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +28,8 @@ class CharacterViewController: UIViewController {
     }
 
     func setup() {
-        guard let viewModel = viewModel
-        else {
-            return
-        }
+        guard let viewModel = viewModel else { return }
+
         if let url = viewModel.profileImageUrl {
             profileImageView.image(from: url)
             profileImageView.layer.masksToBounds = true
@@ -51,6 +51,15 @@ class CharacterViewController: UIViewController {
             let gesture = UITapGestureRecognizer(target: self, action: #selector(self.locationTapped(sender:)))
             view.addGestureRecognizer(gesture)
         }
+
+        setupButton()
+    }
+
+    private func setupButton() {
+        guard let viewModel = viewModel else { return }
+        
+        let title = LocalStorage.isFavorite(id: viewModel.characterId) ? "Remove from favorites" : "Add to favorites"
+        favoritesButton.setTitle(title, for: .normal)
     }
 
     @objc func originTapped(sender: UITapGestureRecognizer) {
@@ -77,5 +86,12 @@ class CharacterViewController: UIViewController {
                 }
             }
         }
+    }
+
+    @IBAction func favoriteButtonTapped(_ sender: UIButton) {
+        guard let id = viewModel?.characterId else { return }
+        LocalStorage.toggleFavorite(id: id)
+
+        setupButton()
     }
 }

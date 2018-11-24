@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD8CDE3221A9F1680019A44E /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8CDE3121A9F1680019A44E /* LocalStorage.swift */; };
 		CDD9990621A931E1009536A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9990521A931E1009536A0 /* AppDelegate.swift */; };
 		CDD9990821A931E1009536A0 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9990721A931E1009536A0 /* FirstViewController.swift */; };
 		CDD9990A21A931E1009536A0 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9990921A931E1009536A0 /* SecondViewController.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CD8CDE3121A9F1680019A44E /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		CDD9990221A931E1009536A0 /* rnm_challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rnm_challenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD9990521A931E1009536A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CDD9990721A931E1009536A0 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			children = (
 				CDD9994621A950D5009536A0 /* UIImageView.swift */,
 				CDD9995321A964C0009536A0 /* UITableView.swift */,
+				CD8CDE3121A9F1680019A44E /* LocalStorage.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				CDD9993421A93544009536A0 /* AnimatedCharacter.swift in Sources */,
 				CDD9997421A9C883009536A0 /* CharactersProtocol.swift in Sources */,
 				CDD9990821A931E1009536A0 /* FirstViewController.swift in Sources */,
+				CD8CDE3221A9F1680019A44E /* LocalStorage.swift in Sources */,
 				CDD9994421A94C9A009536A0 /* NetworkManager.swift in Sources */,
 				CDD9997221A9C861009536A0 /* CharactersViewModel.swift in Sources */,
 				CDD9994721A950D5009536A0 /* UIImageView.swift in Sources */,
