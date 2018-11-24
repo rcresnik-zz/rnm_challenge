@@ -1,5 +1,5 @@
 //
-//  CharacterCellViewModel.swift
+//  CharacterViewModel.swift
 //  rnm_challenge
 //
 //  Created by rokit on 24/11/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CharacterCellViewModel: CharacterProtocol {
+struct CharacterViewModel: CharacterProtocol {
     var profileImageUrl: URL?
     var characterName: String
     var originLocation: String?
@@ -20,6 +20,7 @@ struct CharacterCellViewModel: CharacterProtocol {
     init(item: CharacterProtocol) {
         self.profileImageUrl = item.profileImageUrl
         self.characterName = item.characterName
+        self.originLocation = item.originLocation ?? "unknown"
         self.lastKnownLocation = item.lastKnownLocation
         self.lastKnownStatus = item.lastKnownStatus
         self.name = item.characterName

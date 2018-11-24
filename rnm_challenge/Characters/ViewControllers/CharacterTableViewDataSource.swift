@@ -11,19 +11,19 @@ import Foundation
 import UIKit
 
 class CharacterTableViewDataSource: NSObject, UITableViewDataSource {
-    var items: [[CharacterCellProtocol]] = []
+    var items: [[CharacterProtocol]] = []
     var currentPage = 0
 
-    convenience init(items: [CharacterCellProtocol] = [CharacterCellProtocol]()) {
+    convenience init(items: [CharacterProtocol] = [CharacterProtocol]()) {
         self.init()
         self.items = [items]
     }
 
-    func item(for indexPath: IndexPath) -> CharacterCellProtocol {
+    func item(for indexPath: IndexPath) -> CharacterProtocol {
         return items[indexPath.section][indexPath.row]
     }
 
-    func addItems(newItems: [CharacterCellProtocol]) {
+    func addItems(newItems: [CharacterProtocol]) {
         items.append(newItems)
     }
 
@@ -48,12 +48,12 @@ class CharacterTableViewDataSource: NSObject, UITableViewDataSource {
 
 extension CharacterTableViewDataSource {
     func fetchData(completion: @escaping ((Int?, Err?) -> Void)) {
-        NetworkApi.shared.all(page: currentPage) { (characters, err) in
+        NetworkManager.shared.characterService.all(page: currentPage) { (characters, err) in
             if let err = err {
                 print(err.description)
             } else {
                 DispatchQueue.main.async() {
-                    self.addItems(newItems: characters)
+                    self.addItems(newItems: characters ?? [])
                     completion(self.currentPage, nil)
 
                 }

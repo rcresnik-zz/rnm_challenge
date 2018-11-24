@@ -17,7 +17,7 @@ class CharacterTableViewCell: UITableViewCell, ReusableView, NibLoadableView {
     @IBOutlet weak var statusLabel: UILabel!
 
 
-    func setup(viewModel: CharacterCellProtocol) {
+    func setup(viewModel: CharacterProtocol) {
         if let url = viewModel.profileImageUrl {
             profileImageView.image(from: url)
         }

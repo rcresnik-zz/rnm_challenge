@@ -15,11 +15,13 @@ struct UrlConstants {
             return UrlConstants.baseUrl + "character/?page=\(page)"
         }
         static func with(id: Int) -> String {
-            return UrlConstants.baseUrl + "/\(id)"
+            return UrlConstants.baseUrl + "character/\(id)"
         }
     }
 
     struct Location {
-
+        static func with(id: Int) -> String {
+            return UrlConstants.baseUrl + "location/\(id)"
+        }
     }
 }

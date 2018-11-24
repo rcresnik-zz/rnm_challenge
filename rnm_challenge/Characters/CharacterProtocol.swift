@@ -8,20 +8,26 @@
 
 import Foundation
 
-protocol CharacterCellProtocol {
+protocol CharacterProtocol {
     var profileImageUrl: URL? { get }
     var characterName: String { get }
+    var originLocation: String? { get }
     var lastKnownLocation: String { get }
     var lastKnownStatus: String { get }
+    
 }
 
-extension AnimatedCharacter: CharacterCellProtocol {
+extension AnimatedCharacter: CharacterProtocol {
     var profileImageUrl: URL? {
         return imageUrl
     }
 
     var characterName: String {
         return name
+    }
+
+    var originLocation: String? {
+        return origin.name
     }
 
     var lastKnownLocation: String {

@@ -9,7 +9,7 @@
 import UIKit
 
 class CharacterComponent {
-    var viewController: CharactersViewController!
+    var viewController: CharactersTableViewController!
 
     var currentPage: Int = 1
 
@@ -17,17 +17,19 @@ class CharacterComponent {
 
     }
 
-    convenience init(container: UIView) {
+    convenience init(container: UIView) throws {
         self.init()
 
-        viewController = CharactersViewController(nibName: CharactersViewController.nibName, bundle: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let controller = storyboard.instantiateViewController(withIdentifier: "CharactersTableViewController") as? CharactersTableViewController
+        else {
+            throw Err(description: "Couldnt load 'CharactersTableViewController' from stroyboard!")
+        }
+
+        viewController = controller
         viewController.view.frame = container.frame
 
         container.addSubview(viewController.view)
-    }
-
-    func resetDataSource(items: [CharacterCellProtocol]) {
-        viewController.dataSource.items = [items]
     }
 
     func reload() {

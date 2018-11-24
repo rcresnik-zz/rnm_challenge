@@ -10,23 +10,17 @@ import UIKit
 
 class FirstViewController: UIViewController {
     var characterComponent: CharacterComponent!
+    @IBOutlet weak var containerView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        characterComponent = CharacterComponent(container: view)
-
-        fetchData()
-    }
-
-    func fetchData() {
-        NetworkApi.shared.all(page: 1) { (characters, err) in
-            if let err = err {
-                print(err.description)
-            } else {
-                self.characterComponent.resetDataSource(items: characters)
-                self.characterComponent.reload()
-            }
+        do {
+            characterComponent = try CharacterComponent(container: containerView)
+        } catch let err as Err {
+            print(err.description)
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }

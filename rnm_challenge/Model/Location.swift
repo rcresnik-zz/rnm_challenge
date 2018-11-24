@@ -8,25 +8,54 @@
 
 import Foundation
 
+enum LocationType: String {
+    case planet
+    case spaceStation = "Space station"
+    case unknown
+}
+
 struct Location {
+    let id: Int?
     let name: String
-    let url: URL?
+    let type: LocationType
+    let dimension: String
+    let residents: [URL?]
 }
 
 extension Location: Decodable {
     private enum PropertyKeys: String, CodingKey {
-        case name
+        case id
         case url
+        case name
+        case type
+        case dimension
+        case residents
     }
 
     init(from decoder: Decoder) throws {
         do {
             let container = try decoder.container(keyedBy: PropertyKeys.self)
 
+            let urlString = try container.decode(String.self, forKey: .url)
+            var id = Int(urlString.components(separatedBy: CharacterSet.decimalDigits.inverted).joined())
+            if  id == nil {
+                id = try container.decodeIfPresent(Int.self, forKey: .id)
+            }
             let name = try container.decode(String.self, forKey: .name)
-            let url = URL(string: try container.decode(String.self, forKey: .url))
 
-            self.init(name: name, url: url)
+            let tmp = try container.decodeIfPresent(String.self, forKey: .type)
+            let type = LocationType(rawValue: tmp?.lowercased() ?? "") ?? .unknown
+
+            let dimension = try container.decodeIfPresent(String.self, forKey: .dimension) ?? ""
+
+            let array: [String] = try container.decodeIfPresent([String].self, forKey: .residents) ?? []
+            let residents = array.map { URL(string: $0) }
+
+            self.init(id: id,
+                      name: name,
+                      type: type,
+                      dimension: dimension,
+                      residents: residents)
         } catch {
             throw Err(sender: Location.self, error: error)
         }
