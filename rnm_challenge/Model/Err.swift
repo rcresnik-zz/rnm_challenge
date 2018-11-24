@@ -31,6 +31,10 @@ struct Err: Error {
         }
     }
 
+    init(description: String) {
+        self.description = description
+    }
+
     private func createErrorDescription(name: String, log: DecodingError.Context) -> String {
         let lastLog = log.codingPath.last.debugDescription
         if let results = lastLog.range(of: "\"([^\"]+)\"", options: .regularExpression) {

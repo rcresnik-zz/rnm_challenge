@@ -25,7 +25,7 @@ enum Gender: String {
     case unknown
 }
 
-struct AinmatedCharacter {
+struct AnimatedCharacter {
     let id: Int
     let name: String
     let status: Status
@@ -40,7 +40,7 @@ struct AinmatedCharacter {
     let created: Date?
 }
 
-extension AinmatedCharacter: Decodable {
+extension AnimatedCharacter: Decodable {
     private enum PropertyKeys: String, CodingKey {
         case id
         case name
@@ -96,7 +96,7 @@ extension AinmatedCharacter: Decodable {
                       url: url,
                       created: created)
         } catch {
-            throw Err(sender: AinmatedCharacter.self, error: error)
+            throw Err(sender: AnimatedCharacter.self, error: error)
         }
     }
 }

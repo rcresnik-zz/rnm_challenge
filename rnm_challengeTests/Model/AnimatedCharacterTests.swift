@@ -24,7 +24,7 @@ class CharacterTests: XCTestCase {
         let response = try! Data(contentsOf: url)
 
         do {
-            let morty = try JSONDecoder().decode(AinmatedCharacter.self, from: response)
+            let morty = try JSONDecoder().decode(AnimatedCharacter.self, from: response)
 
             XCTAssertEqual(morty.name, "Morty Smith", "The name should be Morty Smith!")
             XCTAssertEqual(morty.status, Status.alive, "Morty should be alive!!")
@@ -44,7 +44,7 @@ class CharacterTests: XCTestCase {
         let response = try! Data(contentsOf: url)
 
         do {
-            let networObject = try JSONDecoder().decode(NetworkObject<AinmatedCharacter>.self, from: response)
+            let networObject = try JSONDecoder().decode(NetworkObject<AnimatedCharacter>.self, from: response)
             let characters = networObject.results
             XCTAssertEqual(characters.count, 1, "There should be only 1 character present!")
             

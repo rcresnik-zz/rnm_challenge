@@ -9,12 +9,24 @@
 import UIKit
 
 class FirstViewController: UIViewController {
+    var characterComponent: CharacterComponent!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        characterComponent = CharacterComponent(container: view)
+
+        fetchData()
     }
 
-
+    func fetchData() {
+        NetworkApi.shared.all(page: 1) { (characters, err) in
+            if let err = err {
+                print(err.description)
+            } else {
+                self.characterComponent.resetDataSource(items: characters)
+                self.characterComponent.reload()
+            }
+        }
+    }
 }
-
