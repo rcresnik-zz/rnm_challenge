@@ -52,7 +52,12 @@
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="34J-Bf-vqV"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="N3V-rK-2uf">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <attributedString key="attributedTitle"/>
+                    </refreshControl>
                     <connections>
+                        <outlet property="refreshControll" destination="N3V-rK-2uf" id="kWz-OC-HNc"/>
                         <segue destination="0LB-Mp-YEK" kind="show" identifier="CharacterSegue" id="O1c-HQ-5HA"/>
                     </connections>
                 </tableViewController>
@@ -364,6 +369,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xlu-Ld-DmJ"/>
+        <segue reference="O1c-HQ-5HA"/>
     </inferredMetricsTieBreakers>
 </document>

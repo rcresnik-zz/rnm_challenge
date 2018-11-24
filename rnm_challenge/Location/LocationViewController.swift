@@ -46,19 +46,37 @@ class LocationViewController: UIViewController {
     @objc func residentsViewTapped(sender: UITapGestureRecognizer) {
         guard let ids = viewModel?.residentIds else { return }
 
-        NetworkManager.shared.characterService.with(ids: ids) { (characters, err) in
-            if let err = err {
-                print(err.description)
-            } else if let characters = characters {
+        if ids.count == 1 {
+            NetworkManager.shared.characterService.with(id: ids[0]) { (character, err) in
                 DispatchQueue.main.async() {
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    guard let controller = storyboard.instantiateViewController(withIdentifier: CharactersTableViewController.identifier) as? CharactersTableViewController else {
-                        return
+                    if let err = err {
+                        print(err.description)
+                    } else if let character = character {
+                        self.navigateToViewController(with: [character])
                     }
-                    controller.viewModel = CharactersViewModel(items: characters, canFetch: false)
-                    self.navigationController?.pushViewController(controller, animated: true)
+                }
+            }
+            return
+        }
+
+        NetworkManager.shared.characterService.with(ids: ids) { (characters, err) in
+            DispatchQueue.main.async() {
+                if let err = err {
+                    print(err.description)
+                } else if let characters = characters {
+                    self.navigateToViewController(with: characters)
                 }
             }
         }
+    }
+
+    private func navigateToViewController(with characters: [AnimatedCharacter]) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let controller = storyboard.instantiateViewController(withIdentifier: CharactersTableViewController.identifier) as? CharactersTableViewController else {
+            return
+        }
+        controller.title = self.viewModel?.locationName
+        controller.viewModel = CharactersViewModel(items: characters, canFetch: false)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }

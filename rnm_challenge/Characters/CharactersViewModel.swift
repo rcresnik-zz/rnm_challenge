@@ -11,7 +11,7 @@ import Foundation
 class CharactersViewModel {
     var characters: [CharacterProtocol] = []
     var pageNumber: Int = 1
-    var canFetch: Bool 
+    var canFetch: Bool
 
     init(items: [CharacterProtocol], canFetch: Bool = true) {
         self.characters = items
@@ -22,8 +22,13 @@ class CharactersViewModel {
         self.characters.append(contentsOf: characters)
     }
 
-    func fetchData(completion: @escaping ((Err?) -> Void)) {
-        guard canFetch == true else { return }
+    func fetchData(page: Int = 1, completion: @escaping ((Err?) -> Void)) {
+        guard canFetch == true else {
+            let err = Err(description: "Not allowed to fetch!")
+            completion(err)
+            return
+        }
+
         
         NetworkManager.shared.characterService.all(page: pageNumber) { (characters, err) in
             DispatchQueue.main.async() {
@@ -31,7 +36,11 @@ class CharactersViewModel {
                     print(err.description)
                     completion(err)
                 } else if let characters = characters {
-                    self.addMore(characters: characters)
+                    if page == 1 {
+                        self.resetCharacters(items: characters)
+                    } else {
+                        self.addMore(characters: characters)
+                    }
                     completion(nil)
                 }
             }
@@ -40,7 +49,7 @@ class CharactersViewModel {
 
     func fetchMore(completion: @escaping ((Err?) -> Void)) {
         pageNumber += 1
-        fetchData(completion: completion)
+        fetchData(page: pageNumber, completion: completion)
     }
 
     func removeFavoriteCharacter(index: Int) {

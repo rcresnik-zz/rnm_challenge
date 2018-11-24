@@ -12,28 +12,20 @@ class CharactersTableViewController: UITableViewController {
     static let identifier = "CharactersViewController"
     var viewModel: CharactersViewModel?
     var canEdit = false
-    var isLoading = false
+
+    @IBOutlet weak var refreshControll: UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(CharacterTableViewCell.self)
+        refreshControl?.addTarget(self, action: #selector(self.refreshData), for: UIControl.Event.valueChanged)
 
-        isLoading = true
-
-        viewModel?.fetchData(completion: { (err) in
-            if let err = err {
-                print(err.description)
-            } else {
-                self.tableView.reloadData()
-            }
-            self.isLoading = false
-        })
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
+        if let viewModel = viewModel,
+            viewModel.canFetch == false {
+            refreshControll.removeFromSuperview()
+        }
+        refreshData()
     }
 }
 
@@ -53,22 +45,20 @@ extension CharactersTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard isLoading == false,
+        guard refreshControll.isRefreshing == false,
             let count = viewModel?.characters.count
         else {
             return
         }
 
         if indexPath.row == count - 10 {
-            isLoading = true
-            
             viewModel?.fetchMore { (err) in
                 if let err = err {
                     print(err.description)
                 } else {
                     self.tableView.reloadData()
                 }
-                self.isLoading = false
+                self.refreshControll.endRefreshing()
             }
         }
     }
@@ -108,5 +98,19 @@ extension CharactersTableViewController {
         }
 
         return cell
+    }
+}
+
+// Refresh Controll
+extension CharactersTableViewController {
+    @objc func refreshData() {
+        viewModel?.fetchData(completion: { (err) in
+            if let err = err {
+                print(err.description)
+            } else {
+                self.tableView.reloadData()
+            }
+            self.refreshControll.endRefreshing()
+        })
     }
 }
