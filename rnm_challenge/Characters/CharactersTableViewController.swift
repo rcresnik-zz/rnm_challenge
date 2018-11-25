@@ -56,7 +56,8 @@ extension CharactersTableViewController {
                 if let err = err {
                     print(err.description)
                 } else {
-                    self.tableView.reloadData()
+                    let indexes: [IndexPath] = (count..<count + 20).map { IndexPath(row: $0, section: 0) }
+                    self.tableView.insertRows(at: indexes, with: UITableView.RowAnimation.fade)
                 }
                 self.refreshControll.endRefreshing()
             }
@@ -93,7 +94,7 @@ extension CharactersTableViewController {
         let cell: CharacterTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
 
         if let item = viewModel?.characters[indexPath.row] {
-            let viewModel = CharacterCellViewModel(item: item)
+            let viewModel = CharacterViewModel(item: item)
             cell.setup(viewModel: viewModel)
         }
 

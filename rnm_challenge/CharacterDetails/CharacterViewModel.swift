@@ -19,6 +19,11 @@ struct CharacterViewModel: CharacterProtocol {
     var lastKnownLocation: String
     var lastKnownLocationId: Int
 
+    var speciesName: String
+    var genderSpecification: String
+    var heartbeatStatus: String
+    var creationText: String
+
     init(item: CharacterProtocol) {
         self.characterId = item.characterId
         self.profileImageUrl = item.profileImageUrl
@@ -29,9 +34,10 @@ struct CharacterViewModel: CharacterProtocol {
 
         self.lastKnownLocation = item.lastKnownLocation
         self.lastKnownLocationId = item.lastKnownLocationId
-    }
 
-    func favorite() {
-        
+        self.speciesName = item.speciesName
+        self.genderSpecification = item.genderSpecification
+        self.heartbeatStatus = item.heartbeatStatus
+        self.creationText = item.creationText
     }
 }

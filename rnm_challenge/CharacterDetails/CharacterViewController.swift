@@ -14,9 +14,15 @@ class CharacterViewController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
 
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var creationLabel: UILabel!
+
+    @IBOutlet weak var speciesLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+
     @IBOutlet weak var originLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-
+    
     @IBOutlet weak var favoritesButton: UIButton!
 
     var viewModel: CharacterViewModel?
@@ -32,11 +38,16 @@ class CharacterViewController: UIViewController {
 
         if let url = viewModel.profileImageUrl {
             profileImageView.image(from: url)
+            profileImageView.layer.cornerRadius = 10
             profileImageView.layer.masksToBounds = true
-            profileImageView.layer.borderColor = #colorLiteral(red: 1, green: 0.659891367, blue: 0, alpha: 1)
-            profileImageView.layer.borderWidth = 5
         }
         nameLabel.text = viewModel.characterName
+        creationLabel.text = viewModel.creationText
+
+        speciesLabel.text = viewModel.speciesName
+        genderLabel.text = viewModel.genderSpecification
+        statusLabel.text = viewModel.heartbeatStatus
+
         let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
                                                           NSAttributedString.Key.underlineColor: nameLabel.textColor]
         originLabel.attributedText = NSAttributedString(string: viewModel.originLocation, attributes: attributes)
