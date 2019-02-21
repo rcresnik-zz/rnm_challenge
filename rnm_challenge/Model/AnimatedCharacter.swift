@@ -35,7 +35,7 @@ struct AnimatedCharacter {
     let origin: Location
     let location: Location
     let imageUrl: URL?
-    let episode: [URL?] // Could be [Episode?]
+    let episodes: [URL?] // Could be [Episode?]
     let url: URL?
     let created: Date?
 }
@@ -60,41 +60,26 @@ extension AnimatedCharacter: Decodable {
         do {
             let container = try decoder.container(keyedBy: PropertyKeys.self)
 
-            let id = try container.decode(Int.self, forKey: .id)
-            let name = try container.decode(String.self, forKey: .name)
+            self.id = try container.decode(Int.self, forKey: .id)
+            self.name = try container.decode(String.self, forKey: .name)
 
-            let status = Status(rawValue: try container.decode(String.self, forKey: .status).lowercased()) ?? .unknown
-            let species = Species(rawValue: try container.decode(String.self, forKey: .species).lowercased()) ?? .unknown
-            let type = try container.decode(String.self, forKey: .type)
-            let gender = Gender(rawValue: try container.decode(String.self, forKey: .gender).lowercased()) ?? .unknown
+            self.status = Status(rawValue: try container.decode(String.self, forKey: .status).lowercased()) ?? .unknown
+            self.species = Species(rawValue: try container.decode(String.self, forKey: .species).lowercased()) ?? .unknown
+            self.type = try container.decode(String.self, forKey: .type)
+            self.gender = Gender(rawValue: try container.decode(String.self, forKey: .gender).lowercased()) ?? .unknown
 
-            let origin = try container.decode(Location.self, forKey: .origin)
+            self.origin = try container.decode(Location.self, forKey: .origin)
 
-            let location = try container.decode(Location.self, forKey: .location)
-            let imageUrl = URL(string: try container.decode(String.self, forKey: .imageUrl))
+            self.location = try container.decode(Location.self, forKey: .location)
+            self.imageUrl = URL(string: try container.decode(String.self, forKey: .imageUrl))
 
             let episodesArray = try container.decode([String].self, forKey: .episode)
-            let episodes = episodesArray.map { URL(string: $0) }
-            let url = URL(string: try container.decode(String.self, forKey: .url))
+            self.episodes = episodesArray.map { URL(string: $0) }
+            self.url = URL(string: try container.decode(String.self, forKey: .url))
 
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-            let created = dateFormatter.date(from: try container.decode(String.self, forKey: .created))
-
-//            2017-11-04T18:48:46.250Z"
-
-            self.init(id: id,
-                      name: name,
-                      status: status,
-                      species: species,
-                      type: type,
-                      gender: gender,
-                      origin: origin,
-                      location: location,
-                      imageUrl: imageUrl,
-                      episode: episodes,
-                      url: url,
-                      created: created)
+            self.created = dateFormatter.date(from: try container.decode(String.self, forKey: .created))
         } catch {
             throw Err(sender: AnimatedCharacter.self, error: error)
         }

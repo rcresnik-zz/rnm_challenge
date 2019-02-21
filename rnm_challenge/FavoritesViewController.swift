@@ -39,13 +39,11 @@ class FavoritesViewController: UIViewController {
         let ids = LocalStorage.favorites()
         
         NetworkManager.shared.characterService.with(ids: ids) { (characters, err) in
-            DispatchQueue.main.async() {
-                if let err = err {
-                    print(err.description)
-                } else if let characters = characters {
-                    self.controller?.viewModel?.resetCharacters(items: characters)
-                    self.controller?.tableView.reloadData()
-                }
+            if let err = err {
+                print(err.description)
+            } else if let characters = characters {
+                self.controller?.viewModel?.resetCharacters(items: characters)
+                self.controller?.tableView.reloadData()
             }
         }
     }

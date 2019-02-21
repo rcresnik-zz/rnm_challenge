@@ -29,20 +29,17 @@ class CharactersViewModel {
             return
         }
 
-        
         NetworkManager.shared.characterService.all(page: pageNumber) { (characters, err) in
-            DispatchQueue.main.async() {
-                if let err = err {
-                    print(err.description)
-                    completion(err)
-                } else if let characters = characters {
-                    if page == 1 {
-                        self.resetCharacters(items: characters)
-                    } else {
-                        self.addMore(characters: characters)
-                    }
-                    completion(nil)
+            if let err = err {
+                print(err.description)
+                completion(err)
+            } else if let characters = characters {
+                if page == 1 {
+                    self.resetCharacters(items: characters)
+                } else {
+                    self.addMore(characters: characters)
                 }
+                completion(nil)
             }
         }
     }

@@ -85,16 +85,14 @@ class CharacterViewController: UIViewController {
         guard let id = id else { return }
         
         NetworkManager.shared.locationService.location(id: id) { (location, err) in
-            DispatchQueue.main.async {
-                if let location = location {
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let controller = storyboard.instantiateViewController(withIdentifier: LocationViewController.identifier)
-                    (controller as? LocationViewController)?.viewModel = LocationViewModel(item: location)
+            if let location = location {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let controller = storyboard.instantiateViewController(withIdentifier: LocationViewController.identifier)
+                (controller as? LocationViewController)?.viewModel = LocationViewModel(item: location)
 
-                    self.navigationController?.pushViewController(controller, animated: true)
-                } else if let err = err {
-                    print(err.description)
-                }
+                self.navigationController?.pushViewController(controller, animated: true)
+            } else if let err = err {
+                print(err.description)
             }
         }
     }

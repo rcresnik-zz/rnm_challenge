@@ -48,24 +48,20 @@ class LocationViewController: UIViewController {
 
         if ids.count == 1 {
             NetworkManager.shared.characterService.with(id: ids[0]) { (character, err) in
-                DispatchQueue.main.async() {
-                    if let err = err {
-                        print(err.description)
-                    } else if let character = character {
-                        self.navigateToViewController(with: [character])
-                    }
+                if let err = err {
+                    print(err.description)
+                } else if let character = character {
+                    self.navigateToViewController(with: [character])
                 }
             }
             return
         }
-
+        
         NetworkManager.shared.characterService.with(ids: ids) { (characters, err) in
-            DispatchQueue.main.async() {
-                if let err = err {
-                    print(err.description)
-                } else if let characters = characters {
-                    self.navigateToViewController(with: characters)
-                }
+            if let err = err {
+                print(err.description)
+            } else if let characters = characters {
+                self.navigateToViewController(with: characters)
             }
         }
     }

@@ -23,11 +23,8 @@ extension NetworkObject: Decodable {
         do {
             let container = try decoder.container(keyedBy: PropertyKeys.self)
 
-            let info = try container.decode(Info.self, forKey: .info)
-            let results = try container.decode([T].self, forKey: .results)
-
-            self.init(info: info,
-                      results: results)
+            self.info = try container.decode(Info.self, forKey: .info)
+            self.results = try container.decode([T].self, forKey: .results)
         } catch {
             throw Err(sender: NetworkObject.self, error: error)
         }

@@ -27,15 +27,10 @@ extension Info: Decodable {
         do {
             let container = try decoder.container(keyedBy: PropertyKeys.self)
 
-            let count = try container.decode(Int.self, forKey: .count)
-            let pages = try container.decode(Int.self, forKey: .pages)
-            let nextUrl = URL(string: try container.decode(String.self, forKey: .nextUrl))
-            let prevUrl = URL(string: try container.decode(String.self, forKey: .prevUrl))
-
-            self.init(count: count,
-                      pages: pages,
-                      nextUrl: nextUrl,
-                      prevUrl: prevUrl)
+            self.count = try container.decode(Int.self, forKey: .count)
+            self.pages = try container.decode(Int.self, forKey: .pages)
+            self.nextUrl = URL(string: try container.decode(String.self, forKey: .nextUrl))
+            self.prevUrl = URL(string: try container.decode(String.self, forKey: .prevUrl))
         } catch {
             throw Err(sender: Info.self, error: error)
         }

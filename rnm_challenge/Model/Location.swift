@@ -36,25 +36,15 @@ extension Location: Decodable {
         do {
             let container = try decoder.container(keyedBy: PropertyKeys.self)
 
-            let urlString = try container.decode(String.self, forKey: .url)
-            var id = Int(urlString.components(separatedBy: CharacterSet.decimalDigits.inverted).joined())
-            if  id == nil {
-                id = try container.decodeIfPresent(Int.self, forKey: .id)
-            }
-            let name = try container.decode(String.self, forKey: .name)
+            self.id = try container.decodeIfPresent(Int.self, forKey: .id)
+            self.name = try container.decode(String.self, forKey: .name)
 
-            let tmp = try container.decodeIfPresent(String.self, forKey: .type)
-            let type = LocationType(rawValue: tmp?.lowercased() ?? "") ?? .unknown
+            let typeString = try container.decodeIfPresent(String.self, forKey: .type)
+            self.type = LocationType(rawValue: typeString?.lowercased() ?? "") ?? .unknown
 
-            let dimension = try container.decodeIfPresent(String.self, forKey: .dimension) ?? ""
+            self.dimension = try container.decodeIfPresent(String.self, forKey: .dimension) ?? ""
 
-            let residents: [String] = try container.decodeIfPresent([String].self, forKey: .residents) ?? []
-
-            self.init(id: id,
-                      name: name,
-                      type: type,
-                      dimension: dimension,
-                      residents: residents)
+            self.residents = try container.decodeIfPresent([String].self, forKey: .residents) ?? []
         } catch {
             throw Err(sender: Location.self, error: error)
         }

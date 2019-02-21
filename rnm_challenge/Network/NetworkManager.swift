@@ -33,22 +33,24 @@ class CharacterService {
         let getRequest = URLRequest(url: url)
 
         let task = URLSession.shared.dataTask(with: getRequest) { (data, response, error) in
-          if let data = data {
-                do {
-                    let results = try JSONDecoder().decode(NetworkObject<AnimatedCharacter>.self, from: data).results
-                    completion(results, nil)
-                } catch let err as Err {
-                    completion([], err)
-                } catch {
+            DispatchQueue.main.async() {
+                if let data = data {
+                    do {
+                        let results = try JSONDecoder().decode(NetworkObject<AnimatedCharacter>.self, from: data).results
+                        completion(results, nil)
+                    } catch let err as Err {
+                        completion([], err)
+                    } catch {
+                        let err = Err(sender: CharacterService.self, error: error)
+                        completion([], err)
+                    }
+                } else if let error = error {
                     let err = Err(sender: CharacterService.self, error: error)
                     completion([], err)
+                } else {
+                    let err = Err(description: "Networking: Unknown error occured")
+                    completion([], err)
                 }
-            } else if let error = error {
-                let err = Err(sender: CharacterService.self, error: error)
-                completion([], err)
-            } else {
-                let err = Err(description: "Networking: Unknown error occured")
-                completion([], err)
             }
         }
         task.resume()
@@ -65,22 +67,24 @@ class CharacterService {
         let getRequest = URLRequest(url: url)
 
         let task = URLSession.shared.dataTask(with: getRequest) { (data, response, error) in
-            if let data = data {
-                do {
-                    let character = try JSONDecoder().decode(AnimatedCharacter.self, from: data)
-                    completion(character, nil)
-                } catch let err as Err {
-                    completion(nil, err)
-                } catch {
+            DispatchQueue.main.async() {
+                if let data = data {
+                    do {
+                        let character = try JSONDecoder().decode(AnimatedCharacter.self, from: data)
+                        completion(character, nil)
+                    } catch let err as Err {
+                        completion(nil, err)
+                    } catch {
+                        let err = Err(sender: CharacterService.self, error: error)
+                        completion(nil, err)
+                    }
+                } else if let error = error {
                     let err = Err(sender: CharacterService.self, error: error)
                     completion(nil, err)
+                } else {
+                    let err = Err(description: "Networking: Unknown error occured")
+                    completion(nil, err)
                 }
-            } else if let error = error {
-                let err = Err(sender: CharacterService.self, error: error)
-                completion(nil, err)
-            } else {
-                let err = Err(description: "Networking: Unknown error occured")
-                completion(nil, err)
             }
         }
         task.resume()
@@ -98,22 +102,24 @@ class CharacterService {
         let getRequest = URLRequest(url: url)
 
         let task = URLSession.shared.dataTask(with: getRequest) { (data, response, error) in
-            if let data = data {
-                do {
-                    let characters = try JSONDecoder().decode([AnimatedCharacter].self, from: data)
-                    completion(characters, nil)
-                } catch let err as Err {
-                    completion([], err)
-                } catch {
+            DispatchQueue.main.async() {
+                if let data = data {
+                    do {
+                        let characters = try JSONDecoder().decode([AnimatedCharacter].self, from: data)
+                        completion(characters, nil)
+                    } catch let err as Err {
+                        completion([], err)
+                    } catch {
+                        let err = Err(sender: CharacterService.self, error: error)
+                        completion([], err)
+                    }
+                } else if let error = error {
                     let err = Err(sender: CharacterService.self, error: error)
                     completion([], err)
+                } else {
+                    let err = Err(description: "Networking: Unknown error occured")
+                    completion([], err)
                 }
-            } else if let error = error {
-                let err = Err(sender: CharacterService.self, error: error)
-                completion([], err)
-            } else {
-                let err = Err(description: "Networking: Unknown error occured")
-                completion([], err)
             }
         }
         task.resume()
@@ -132,22 +138,24 @@ class LocationService {
         let getRequest = URLRequest(url: url)
 
         let task = URLSession.shared.dataTask(with: getRequest) { (data, response, error) in
-            if let data = data {
-                do {
-                    let location = try JSONDecoder().decode(Location.self, from: data)
-                    completion(location, nil)
-                } catch let err as Err {
-                    completion(nil, err)
-                } catch {
+            DispatchQueue.main.async() {
+                if let data = data {
+                    do {
+                        let location = try JSONDecoder().decode(Location.self, from: data)
+                        completion(location, nil)
+                    } catch let err as Err {
+                        completion(nil, err)
+                    } catch {
+                        let err = Err(sender: CharacterService.self, error: error)
+                        completion(nil, err)
+                    }
+                } else if let error = error {
                     let err = Err(sender: CharacterService.self, error: error)
                     completion(nil, err)
+                } else {
+                    let err = Err(description: "Networking: Unknown error occured")
+                    completion(nil, err)
                 }
-            } else if let error = error {
-                let err = Err(sender: CharacterService.self, error: error)
-                completion(nil, err)
-            } else {
-                let err = Err(description: "Networking: Unknown error occured")
-                completion(nil, err)
             }
         }
         task.resume()
