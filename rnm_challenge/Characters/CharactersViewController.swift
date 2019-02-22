@@ -9,8 +9,6 @@
 import UIKit
 
 class CharactersViewController: UITableViewController, Identifieable {
-    static var identifier = "CharactersViewController"
-
     var canFetch = true
     var canEdit = false
     var ids: [Int] = [] {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CharacterCell: UITableViewCell, ReusableView, NibLoadableView {
+class CharacterCell: UITableViewCell, Identifieable {
     static let height: CGFloat = 120
 
     @IBOutlet weak var profileImageView: UIImageView!

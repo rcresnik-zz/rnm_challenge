@@ -8,6 +8,18 @@
 
 import UIKit
 
-protocol Identifieable where Self: UIViewController {
+protocol Identifieable {
     static var identifier: String { get }
+}
+
+extension Identifieable where Self: UIViewController {
+    static var identifier: String {
+        return NSStringFromClass(self).components(separatedBy: ".")[1]
+    }
+}
+
+extension Identifieable where Self: UIView {
+    static var identifier: String {
+        return NSStringFromClass(self).components(separatedBy: ".")[1]
+    }
 }

@@ -8,16 +8,6 @@
 
 import UIKit
 
-protocol ReusableView: class {
-    static var defaultReuseIdentifier: String { get }
-}
-
-extension ReusableView where Self: UIView {
-    static var defaultReuseIdentifier: String {
-        return NSStringFromClass(self)
-    }
-}
-
 protocol NibLoadableView: class {
     static var nibName: String { get }
 }
@@ -30,25 +20,13 @@ extension NibLoadableView where Self: UITableViewCell {
 }
 
 extension UITableView {
-    func register<T: UITableViewCell>(_: T.Type) where T: ReusableView {
-        register(T.self, forCellReuseIdentifier: T.defaultReuseIdentifier)
+    func register<T: UITableViewCell>(_: T.Type) where T: Identifieable {
+        register(UINib(nibName: T.identifier, bundle: nil), forCellReuseIdentifier: T.identifier)
     }
 
-    func register<T: UITableViewCell>(_: T.Type) where T: NibLoadableView, T: ReusableView {
-        register(UINib(nibName: T.nibName, bundle: nil), forCellReuseIdentifier: T.defaultReuseIdentifier)
-    }
-
-    func dequeueReusableCell<T: UITableViewCell>(forIndexPath indexPath: IndexPath) -> T where T: ReusableView {
-        guard let cell = self.dequeueReusableCell(withIdentifier: T.defaultReuseIdentifier, for: indexPath) as? T else {
-            fatalError("Failed to deque cell with identifier: \(T.defaultReuseIdentifier)")
-        }
-
-        return cell
-    }
-
-    func selectedCell<T: UITableViewCell>() -> T? where T: ReusableView {
-        guard let selectedIndexPath = self.indexPathForSelectedRow, let cell = self.cellForRow(at: selectedIndexPath) as? T else {
-            return nil
+    func dequeueReusableCell<T: UITableViewCell>(forIndexPath indexPath: IndexPath) -> T where T: Identifieable {
+        guard let cell = self.dequeueReusableCell(withIdentifier: T.identifier, for: indexPath) as? T else {
+            fatalError("Failed to deque cell with identifier: \(T.identifier)")
         }
 
         return cell

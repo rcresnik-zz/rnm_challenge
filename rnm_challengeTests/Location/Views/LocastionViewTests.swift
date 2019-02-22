@@ -29,7 +29,7 @@ class LocastionViewTests: XCTestCase {
             let location = networObject.results[0]
             let viewModel = LocationViewModel(item: location)
 
-            let view: LocationView = UIView.loadView(identifier: LocationView.identifier)
+            let view: LocationView = UIView.loadView()
             view.setup(viewModel: viewModel)
 
             XCTAssertEqual(view.nameLabel.text, location.name)

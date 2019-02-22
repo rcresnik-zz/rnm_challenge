@@ -13,9 +13,7 @@ protocol CharacterViewProtocol {
     func favoritesClicked(sender: UIButton)
 }
 
-class CharacterView: UIView {
-    static let identifier: String = "CharacterView"
-
+class CharacterView: UIView, Identifieable {
     var isFavorite: Bool = false {
         didSet {
             let title = CharacterViewModel.favoritesButtonTitleFor(isFavorite)

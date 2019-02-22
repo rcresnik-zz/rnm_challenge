@@ -9,12 +9,10 @@
 import UIKit
 
 class LocationViewController: UIViewController, Identifieable {
-    static var identifier = "LocationViewController"
-
     var locationId: Int = -1
     var residentIds: [Int] = []
 
-    var locationView: LocationView = UIView.loadView(identifier: LocationView.identifier)
+    var locationView: LocationView = UIView.loadView()
 
     override func viewDidLoad() {
         super.viewDidLoad()

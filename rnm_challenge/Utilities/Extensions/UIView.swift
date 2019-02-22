@@ -9,8 +9,8 @@
 import UIKit
 
 extension UIView {
-    static func loadView<T: UIView>(identifier: String) -> T {
-        if let view = Bundle.main.loadNibNamed(identifier, owner: self, options: nil)?.first as? T {
+    static func loadView<T: Identifieable>() -> T {
+        if let view = Bundle.main.loadNibNamed(T.identifier, owner: self, options: nil)?.first as? T {
             return view
         } else {
             fatalError()

@@ -12,9 +12,7 @@ import UIKit
     func residentsTapped()
 }
 
-class LocationView: UIView {
-    static let identifier: String = "LocationView"
-
+class LocationView: UIView, Identifieable {
     @IBOutlet weak internal var nameLabel: UILabel!
     @IBOutlet weak internal var typeLabel: UILabel!
     

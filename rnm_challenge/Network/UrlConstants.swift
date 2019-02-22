@@ -11,14 +11,16 @@ import Foundation
 struct UrlConstants {
     static let baseUrl = "https://rickandmortyapi.com/api/"
     struct Character {
-        static func all(page: Int) -> String {
-            return UrlConstants.baseUrl + "character/?page=\(page)"
-        }
+        static func with(ids: [Int]? = nil, page: Int? = nil) -> String? {
+            var string: String? = nil
+            if let ids = ids {
+                let idString = ids.map { "\($0)" }.joined(separator: ",")
+                string = UrlConstants.baseUrl + "character/\(idString)"
+            } else if let page = page {
+                string = UrlConstants.baseUrl + "character/?page=\(page)"
+            }
 
-        static func with(ids: [Int]) -> String {
-            let idString = ids.map { "\($0)" }.joined(separator: ",")
-
-            return UrlConstants.baseUrl + "character/\(idString)"
+            return string
         }
     }
 

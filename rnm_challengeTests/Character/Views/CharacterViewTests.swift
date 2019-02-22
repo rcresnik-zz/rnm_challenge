@@ -28,7 +28,7 @@ class CharacterViewTests: XCTestCase {
             let character = try JSONDecoder().decode(AnimatedCharacter.self, from: response)
             let viewModel = CharacterViewModel(item: character)
 
-            let characterView: CharacterView = UIView.loadView(identifier: CharacterView.identifier)
+            let characterView: CharacterView = UIView.loadView()
             characterView.setupWith(viewModel)
 
             XCTAssertEqual(characterView.genderLabel.text, character.gender.rawValue)

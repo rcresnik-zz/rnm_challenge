@@ -9,7 +9,6 @@
 import UIKit
 
 class FavoritesViewController: UIViewController, Identifieable {
-    static var identifier: String = "FavoritesViewController"
     var controller: CharactersViewController?
 
     override func viewDidLoad() {

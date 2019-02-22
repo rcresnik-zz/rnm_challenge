@@ -12,10 +12,8 @@ struct CharacterStore: Answerable {
     func with(ids: [Int]? = nil, page: Int? = nil, completion: @escaping CompletionBlock<[AnimatedCharacter]>) {
 
         var url: URL
-        if let page = page, page > 0 {
-            url = URL.string(UrlConstants.Character.all(page: page))
-        } else if let ids = ids, ids.count > 0 {
-            url = URL.string(UrlConstants.Character.with(ids: ids))
+        if let urlString = UrlConstants.Character.with(ids: ids, page: page) {
+            url = URL.string(urlString)
         } else {
             let result = Result<[AnimatedCharacter]>.failure(Err(description: "Couldn't generate URL."))
             completion(result)

@@ -27,6 +27,7 @@
 		CD6B88FF222008F8009EE080 /* CharacterCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6B88FE222008F8009EE080 /* CharacterCellViewModelTests.swift */; };
 		CD6B890222200B91009EE080 /* CharacterViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6B890122200B91009EE080 /* CharacterViewTests.swift */; };
 		CD6B890522200CAA009EE080 /* LocastionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6B890422200CAA009EE080 /* LocastionViewTests.swift */; };
+		CD6B890722200E3A009EE080 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6B890622200E3A009EE080 /* UITableView.swift */; };
 		CD8CDE3221A9F1680019A44E /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8CDE3121A9F1680019A44E /* LocalStorage.swift */; };
 		CD8CDE3621AA0CF70019A44E /* LocalStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8CDE3521AA0CF70019A44E /* LocalStorageTests.swift */; };
 		CD8CDE3A21AA0F500019A44E /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8CDE3921AA0F500019A44E /* NetworkManagerTests.swift */; };
@@ -50,7 +51,6 @@
 		CDD9994421A94C9A009536A0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9994321A94C9A009536A0 /* NetworkManager.swift */; };
 		CDD9994721A950D5009536A0 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9994621A950D5009536A0 /* UIImageView.swift */; };
 		CDD9994A21A95471009536A0 /* CharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9994921A95471009536A0 /* CharactersViewController.swift */; };
-		CDD9995421A964C0009536A0 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9995321A964C0009536A0 /* UITableView.swift */; };
 		CDD9995821A9665A009536A0 /* CharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDD9995721A9665A009536A0 /* CharacterCell.xib */; };
 		CDD9995D21A99817009536A0 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9995C21A99817009536A0 /* CharacterViewController.swift */; };
 		CDD9996321A9A00B009536A0 /* CharacterCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9996221A9A00B009536A0 /* CharacterCellViewModel.swift */; };
@@ -91,6 +91,7 @@
 		CD6B88FE222008F8009EE080 /* CharacterCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCellViewModelTests.swift; sourceTree = "<group>"; };
 		CD6B890122200B91009EE080 /* CharacterViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewTests.swift; sourceTree = "<group>"; };
 		CD6B890422200CAA009EE080 /* LocastionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocastionViewTests.swift; sourceTree = "<group>"; };
+		CD6B890622200E3A009EE080 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		CD8CDE3121A9F1680019A44E /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		CD8CDE3521AA0CF70019A44E /* LocalStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageTests.swift; sourceTree = "<group>"; };
 		CD8CDE3921AA0F500019A44E /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
@@ -118,7 +119,6 @@
 		CDD9994321A94C9A009536A0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		CDD9994621A950D5009536A0 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		CDD9994921A95471009536A0 /* CharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewController.swift; sourceTree = "<group>"; };
-		CDD9995321A964C0009536A0 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		CDD9995721A9665A009536A0 /* CharacterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCell.xib; sourceTree = "<group>"; };
 		CDD9995C21A99817009536A0 /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
 		CDD9996221A9A00B009536A0 /* CharacterCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCellViewModel.swift; sourceTree = "<group>"; };
@@ -149,9 +149,9 @@
 		CD6B88E6221FEFD8009EE080 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				CD6B890622200E3A009EE080 /* UITableView.swift */,
 				CDD9994621A950D5009536A0 /* UIImageView.swift */,
 				CD6B88E2221FEFA8009EE080 /* URL.swift */,
-				CDD9995321A964C0009536A0 /* UITableView.swift */,
 				CD6B88E4221FEFC2009EE080 /* UIView.swift */,
 				CD6B88E0221FEF87009EE080 /* UIStoryboard.swift */,
 				CD6B88DE221FE14F009EE080 /* UIColor.swift */,
@@ -545,8 +545,8 @@
 				CDD9990621A931E1009536A0 /* AppDelegate.swift in Sources */,
 				CDD9993F21A942CD009536A0 /* Err.swift in Sources */,
 				CDD9996321A9A00B009536A0 /* CharacterCellViewModel.swift in Sources */,
+				CD6B890722200E3A009EE080 /* UITableView.swift in Sources */,
 				CDD9996E21A9B303009536A0 /* LocationViewModel.swift in Sources */,
-				CDD9995421A964C0009536A0 /* UITableView.swift in Sources */,
 				CDD9994221A94845009536A0 /* UrlConstants.swift in Sources */,
 				CD6B88E5221FEFC2009EE080 /* UIView.swift in Sources */,
 				CDD9993B21A93E1A009536A0 /* NetworkObject.swift in Sources */,

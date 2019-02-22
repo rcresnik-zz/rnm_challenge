@@ -9,8 +9,6 @@
 import UIKit
 
 class CharacterViewController: UIViewController, Identifieable {
-    static var identifier = "CharacterViewController"
-
     @IBOutlet weak var profileImageView: UIImageView!
 
     @IBOutlet weak var nameLabel: UILabel!
@@ -30,7 +28,7 @@ class CharacterViewController: UIViewController, Identifieable {
     fileprivate var originId = -1
     fileprivate var locationId = -1
     
-    var characterView: CharacterView = UIView.loadView(identifier: CharacterView.identifier)
+    var characterView: CharacterView = UIView.loadView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
