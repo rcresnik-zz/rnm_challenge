@@ -8,10 +8,23 @@
 
 import UIKit
 
-class CharactersTableViewController: UITableViewController {
-    static let identifier = "CharactersTableViewController"
+class CharactersViewController: UITableViewController, Identifieable {
+    static var identifier = "CharactersViewController"
+
+    var canFetch = true
     var canEdit = false
-    var viewModel: CharactersTableViewModel = CharactersTableViewModel(items: [], canFetch: false)
+    var ids: [Int] = [] {
+        didSet {
+            fetchData()
+        }
+    }
+    var page: Int = 0 {
+        didSet {
+            fetchData()
+        }
+    }
+
+    var viewModel: CharactersViewModel = CharactersViewModel(items: [])
 
     @IBOutlet weak var refreshControll: UIRefreshControl!
 
@@ -19,19 +32,19 @@ class CharactersTableViewController: UITableViewController {
         super.viewDidLoad()
 
         tableView.register(CharacterCell.self)
-        refreshControl?.addTarget(self, action: #selector(self.refreshData), for: UIControl.Event.valueChanged)
+        refreshControl?.addTarget(self, action: #selector(self.fetchData), for: UIControl.Event.valueChanged)
 
-        if viewModel.canFetch == false {
+        if canFetch == false {
             refreshControll.removeFromSuperview()
         }
-        refreshData()
+        
     }
 }
 
 // TableViewDelegate
-extension CharactersTableViewController {
+extension CharactersViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = UIStoryboard.loadViewController(identifier: CharacterViewController.identifier) as CharacterViewController
+        let controller: CharacterViewController = UIStoryboard.loadViewController()
 
         let item = viewModel.characters[indexPath.row]
         controller.characterId = item.characterId
@@ -52,7 +65,7 @@ extension CharactersTableViewController {
         let count = viewModel.characters.count
 
         if indexPath.row == count - 10 {
-            fetchCharacterPage(viewModel.pageNumber + 1)
+            page += 1
         }
     }
 
@@ -69,7 +82,7 @@ extension CharactersTableViewController {
 }
 
 // UITableViewDataSource
-extension CharactersTableViewController {
+extension CharactersViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -88,44 +101,27 @@ extension CharactersTableViewController {
     }
 }
 
-// Refresh Controll
-extension CharactersTableViewController {
-    @objc func refreshData() {
-        fetchCharacterPage(viewModel.pageNumber)
-    }
-
-    func fetchMore() {
-        guard viewModel.canFetch == true
-            else {
-                let err = Err(description: "Not allowed to fetch!")
-                print(err)
-                return
-        }
-        let page = viewModel.pageNumber + 1
-
-        fetchCharacterPage(page)
-    }
-
-    fileprivate func fetchCharacterPage(_ page: Int) {
-        guard viewModel.canFetch == true
-            else {
-                let err = Err(description: "Not allowed to fetch!")
-                print(err)
-                return
-        }
-
-        NetworkManager.shared.characterService.all(page: page) { [weak self] (result) in
+@objc extension CharactersViewController {
+    fileprivate func fetchData() {
+        NetworkManager.shared.characterStore.with(ids: ids, page: page) { (result) in
             switch result {
             case .success(let characters):
-                if page == 1 {
-                    self?.viewModel.resetCharacters(characters)
-                    self?.tableView.reloadData()
+                if self.page <= 1 {
+                    self.viewModel.resetCharacters(characters)
+                    self.tableView.reloadData()
                 } else {
-                    self?.viewModel.addCharacters(characters)
+                    let oldCount = self.viewModel.characters.count - 1
+                    self.viewModel.addCharacters(characters)
+                    let newCount = self.viewModel.characters.count - 1
+
+                    let indexes: [IndexPath] = (oldCount..<newCount).map { IndexPath(row: $0, section: 0) }
+                    self.tableView.insertRows(at: indexes, with: UITableView.RowAnimation.fade)
                 }
-                self?.refreshControll.endRefreshing()
+                self.refreshControll.endRefreshing()
             case . failure(let err):
+                self.viewModel.resetCharacters([])
                 print(err.description)
+                self.tableView.reloadData()
             }
         }
     }

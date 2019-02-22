@@ -44,7 +44,7 @@ class CharacterView: UIView {
      // Drawing code
      }
      */
-    func setupWith(_ viewModel: CharacterViewModel) {
+    func setupWith(_ viewModel: CharacterViewModel, viewController: CharacterProtocol? = nil) {
         isFavorite = viewModel.isFavorite
 
         profileImageView.image(from: viewModel.profileImageUrl)
@@ -59,25 +59,25 @@ class CharacterView: UIView {
         originLabel.text = viewModel.originLocation
         locationLabel.text = viewModel.lastKnownLocation
 
-        if let parent = superview as? Touchable {
-            var gesture = UITapGestureRecognizer(target: parent,
-                                                 action: #selector(Touchable.originTapped))
-            originLabel.addGestureRecognizer(gesture)
+        if let vc = viewController {
+            var gesture = UITapGestureRecognizer(target: vc,
+                                                 action: #selector(CharacterProtocol.originTapped))
+            originLabel.superview?.addGestureRecognizer(gesture)
 
-            gesture = UITapGestureRecognizer(target: parent,
-                                             action: #selector(Touchable.locationTapped))
+            gesture = UITapGestureRecognizer(target: vc,
+                                             action: #selector(CharacterProtocol.locationTapped))
 
-            locationLabel.addGestureRecognizer(gesture)
+            locationLabel.superview?.addGestureRecognizer(gesture)
 
-            favoritesButton.addTarget(parent,
-                                      action: #selector(Touchable.favoriteTapped), for: .touchDown)
+            favoritesButton.addTarget(vc,
+                                      action: #selector(CharacterProtocol.favoriteTapped), for: .touchDown)
         }
     }
 
 
 }
 
-@objc protocol Touchable where Self: UIViewController {
+@objc protocol CharacterProtocol where Self: UIViewController {
     func originTapped()
 
     func locationTapped()

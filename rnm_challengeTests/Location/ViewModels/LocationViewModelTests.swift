@@ -2,14 +2,14 @@
 //  LocationTests.swift
 //  rnm_challengeTests
 //
-//  Created by rokit on 24/11/2018.
-//  Copyright © 2018 rok cresnik. All rights reserved.
+//  Created by rokit on 22/02/2019.
+//  Copyright © 2019 rok cresnik. All rights reserved.
 //
 
 import XCTest
 @testable import rnm_challenge
 
-class LocationTests: XCTestCase {
+class LocationViewModelTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -19,24 +19,19 @@ class LocationTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testLocationsDecoding() {
+    func testSetup() {
         let path = Bundle(for: type(of: self)).path(forResource: "locations", ofType: "js")!
         let url = URL(fileURLWithPath: path)
         let response = try! Data(contentsOf: url)
 
         do {
             let networObject = try JSONDecoder().decode(NetworkObject<Location>.self, from: response)
-            let locations = networObject.results
-            XCTAssertEqual(locations.count, 1, "There should be only 1 character present!")
+            let location = networObject.results[0]
+            let viewModel = LocationViewModel(item: location)
 
-            let earth = locations[0]
-            XCTAssertEqual(earth.name, "Earth", "The name should be Earth!")
-            XCTAssertEqual(earth.type, LocationType.planet, "The location type should be Planet!!")
-            XCTAssert(earth.residents.count == 2, "There should be 2 residents on Earth!")
-
-            XCTAssertGreaterThan(earth.residentIds[0], 0)
-        } catch let err as Err {
-            XCTFail(err.description)
+            XCTAssertEqual(viewModel.dimensionName, location.dimension)
+            XCTAssertEqual(viewModel.locationName, location.name)
+            XCTAssertEqual(viewModel.typeName, location.type.rawValue)
         } catch {
             XCTFail(error.localizedDescription)
         }

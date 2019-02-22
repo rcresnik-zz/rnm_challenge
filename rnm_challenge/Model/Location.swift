@@ -55,3 +55,11 @@ extension Location: Decodable {
         }
     }
 }
+
+extension Location {
+    var residentIds: [Int] {
+        return residents
+            .map { Int($0.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) ?? -1 }
+            .compactMap { $0 }
+    }
+}

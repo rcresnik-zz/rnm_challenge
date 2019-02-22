@@ -8,14 +8,11 @@
 
 import Foundation
 
-class CharactersTableViewModel {
+class CharactersViewModel {
     var characters: [CharacterCellViewModel] = []
-    var pageNumber: Int = 1
-    var canFetch: Bool
 
-    init(items: [AnimatedCharacter], canFetch: Bool = true) {
+    init(items: [AnimatedCharacter]) {
         self.characters = items.map { CharacterCellViewModel(item: $0) }
-        self.canFetch = canFetch
     }
 
     func addCharacters(_ characters: [AnimatedCharacter]) {
@@ -30,6 +27,7 @@ class CharactersTableViewModel {
     }
 
     func resetCharacters(_ items: [AnimatedCharacter]) {
-        characters = items.map { CharacterCellViewModel(item: $0) }
+        let viewModels = items.map { CharacterCellViewModel(item: $0) }
+        characters = viewModels
     }
 }

@@ -15,10 +15,6 @@ struct UrlConstants {
             return UrlConstants.baseUrl + "character/?page=\(page)"
         }
 
-        static func with(id: Int) -> String {
-            return UrlConstants.baseUrl + "character/\(id)"
-        }
-
         static func with(ids: [Int]) -> String {
             let idString = ids.map { "\($0)" }.joined(separator: ",")
 
@@ -27,8 +23,9 @@ struct UrlConstants {
     }
 
     struct Location {
-        static func with(id: Int) -> String {
-            return UrlConstants.baseUrl + "location/\(id)"
+        static func with(ids: [Int]) -> String {
+            let idString = ids.map { "\($0)" }.joined(separator: ",")
+            return UrlConstants.baseUrl + "location/\(idString)"
         }
     }
 }

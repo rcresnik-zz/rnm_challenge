@@ -8,8 +8,8 @@
 
 import UIKit
 
-class CharacterViewController: UIViewController {
-    static let identifier = "CharacterViewController"
+class CharacterViewController: UIViewController, Identifieable {
+    static var identifier = "CharacterViewController"
 
     @IBOutlet weak var profileImageView: UIImageView!
 
@@ -40,14 +40,23 @@ class CharacterViewController: UIViewController {
         characterView.frame = view.bounds
         view.addSubview(characterView)
 
-        NetworkManager.shared.characterService.with(id: characterId) { [weak self] (result) in
-            switch result {
-            case .success(let characer):
-                self?.originId = characer.origin.id ?? -1
-                self?.locationId = characer.location.id ?? -1
+        fetchData()
+    }
+}
 
-                let viewModel = CharacterViewModel(item: characer)
-                self?.characterView.setupWith(viewModel)
+// Fetching
+extension CharacterViewController {
+    func fetchData() {
+        NetworkManager.shared.characterStore.with(ids: [characterId]) { (result) in
+            switch result {
+            case .success(let characters):
+                let character = characters[0]
+
+                self.originId = character.origin.id ?? -1
+                self.locationId = character.location.id ?? -1
+
+                let viewModel = CharacterViewModel(item: character)
+                self.characterView.setupWith(viewModel, viewController: self)
             case .failure(let err):
                 print(err.description)
             }
@@ -55,29 +64,25 @@ class CharacterViewController: UIViewController {
     }
 }
 
-extension CharacterViewController: Touchable {
+extension CharacterViewController: CharacterProtocol {
     func favoriteTapped() {
         characterView.isFavorite = LocalStorage.toggleFavorite(id: characterId)
     }
 
     func originTapped() {
-        goToLocation(id: originId)
+        navigateToViewController(with: originId)
     }
 
     func locationTapped() {
-        goToLocation(id: locationId)
+        navigateToViewController(with: locationId)
     }
 
-    private func goToLocation(id: Int?) {
-        if let id = id,
-            id > 0,
-            let controller = UIStoryboard.loadViewController(identifier: LocationViewController.identifier) as? LocationViewController {
+    private func navigateToViewController(with locationId: Int) {
+        if locationId > 0 {
+            let controller: LocationViewController = UIStoryboard.loadViewController()
             controller.locationId = locationId
 
             self.navigationController?.pushViewController(controller, animated: true)
-        }
-        else {
-            return
         }
     }
 }
