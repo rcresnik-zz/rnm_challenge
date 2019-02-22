@@ -29,7 +29,7 @@ class CharacterViewTests: XCTestCase {
             let viewModel = CharacterViewModel(item: character)
 
             let characterView: CharacterView = UIView.loadView()
-            characterView.setupWith(viewModel)
+            characterView.setup(viewModel: viewModel)
 
             XCTAssertEqual(characterView.genderLabel.text, character.gender.rawValue)
             XCTAssertEqual(characterView.nameLabel.text, character.name)

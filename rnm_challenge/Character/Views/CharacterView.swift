@@ -42,7 +42,7 @@ class CharacterView: UIView, Identifieable {
      // Drawing code
      }
      */
-    func setupWith(_ viewModel: CharacterViewModel, viewController: CharacterProtocol? = nil) {
+    func setup(viewModel: CharacterViewModel, viewController: CharacterProtocol? = nil) {
         isFavorite = viewModel.isFavorite
 
         profileImageView.image(from: viewModel.profileImageUrl)

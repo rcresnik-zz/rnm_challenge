@@ -28,6 +28,8 @@
 		CD6B890222200B91009EE080 /* CharacterViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6B890122200B91009EE080 /* CharacterViewTests.swift */; };
 		CD6B890522200CAA009EE080 /* LocastionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6B890422200CAA009EE080 /* LocastionViewTests.swift */; };
 		CD6B890722200E3A009EE080 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6B890622200E3A009EE080 /* UITableView.swift */; };
+		CD6B8909222014F0009EE080 /* CharacterViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6B8908222014F0009EE080 /* CharacterViewControllerTests.swift */; };
+		CD6B890B222016E4009EE080 /* LocationViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6B890A222016E4009EE080 /* LocationViewControllerTests.swift */; };
 		CD8CDE3221A9F1680019A44E /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8CDE3121A9F1680019A44E /* LocalStorage.swift */; };
 		CD8CDE3621AA0CF70019A44E /* LocalStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8CDE3521AA0CF70019A44E /* LocalStorageTests.swift */; };
 		CD8CDE3A21AA0F500019A44E /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8CDE3921AA0F500019A44E /* NetworkManagerTests.swift */; };
@@ -92,6 +94,8 @@
 		CD6B890122200B91009EE080 /* CharacterViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewTests.swift; sourceTree = "<group>"; };
 		CD6B890422200CAA009EE080 /* LocastionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocastionViewTests.swift; sourceTree = "<group>"; };
 		CD6B890622200E3A009EE080 /* UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		CD6B8908222014F0009EE080 /* CharacterViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewControllerTests.swift; sourceTree = "<group>"; };
+		CD6B890A222016E4009EE080 /* LocationViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewControllerTests.swift; sourceTree = "<group>"; };
 		CD8CDE3121A9F1680019A44E /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		CD8CDE3521AA0CF70019A44E /* LocalStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageTests.swift; sourceTree = "<group>"; };
 		CD8CDE3921AA0F500019A44E /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 			children = (
 				CD6B890022200B83009EE080 /* Views */,
 				CD6B88F7222006B5009EE080 /* ViewModel */,
+				CD6B8908222014F0009EE080 /* CharacterViewControllerTests.swift */,
 			);
 			path = Character;
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 			children = (
 				CD6B890322200C97009EE080 /* Views */,
 				CD6B88FB222007DF009EE080 /* ViewModels */,
+				CD6B890A222016E4009EE080 /* LocationViewControllerTests.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -584,8 +590,10 @@
 				CD6B88FF222008F8009EE080 /* CharacterCellViewModelTests.swift in Sources */,
 				CD8CDE3621AA0CF70019A44E /* LocalStorageTests.swift in Sources */,
 				CDD9996521A9ACCA009536A0 /* LocationTests.swift in Sources */,
+				CD6B8909222014F0009EE080 /* CharacterViewControllerTests.swift in Sources */,
 				CDD9993921A93B24009536A0 /* AnimatedCharacterTests.swift in Sources */,
 				CD6B890522200CAA009EE080 /* LocastionViewTests.swift in Sources */,
+				CD6B890B222016E4009EE080 /* LocationViewControllerTests.swift in Sources */,
 				CD6B88F9222006C6009EE080 /* CharacterViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

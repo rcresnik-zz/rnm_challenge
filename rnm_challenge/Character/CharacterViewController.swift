@@ -54,7 +54,7 @@ extension CharacterViewController {
                 self.locationId = character.location.id ?? -1
 
                 let viewModel = CharacterViewModel(item: character)
-                self.characterView.setupWith(viewModel, viewController: self)
+                self.characterView.setup(viewModel: viewModel, viewController: self)
             case .failure(let err):
                 print(err.description)
             }
