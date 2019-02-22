@@ -14,10 +14,10 @@ struct UrlConstants {
     struct Character {
         static func with(ids: [Int]? = nil, page: Int? = nil) -> String? {
             var string: String? = nil
-            if let ids = ids {
+            if let ids = ids, ids.count > 0 {
                 let idString = ids.map { "\($0)" }.joined(separator: ",")
                 string = UrlConstants.baseUrl + "character/\(idString)"
-            } else if let page = page {
+            } else if let page = page, page > 0 {
                 string = UrlConstants.baseUrl + "character/?page=\(page)"
             }
 

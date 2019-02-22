@@ -31,6 +31,7 @@ class FavoritesViewController: UIViewController, Identifieable {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        controller?.page = 0
         controller?.ids = LocalStorage.favorites()
     }
 }

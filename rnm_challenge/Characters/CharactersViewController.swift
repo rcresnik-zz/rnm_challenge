@@ -18,7 +18,9 @@ class CharactersViewController: UITableViewController, Identifieable {
     }
     var page: Int = 0 {
         didSet {
-            fetchData()
+            if page > 0 {
+                fetchData()
+            }
         }
     }
 
