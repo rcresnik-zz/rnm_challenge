@@ -42,7 +42,6 @@
 		CDD9990F21A931E1009536A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDD9990E21A931E1009536A0 /* Assets.xcassets */; };
 		CDD9991221A931E1009536A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDD9991021A931E1009536A0 /* LaunchScreen.storyboard */; };
 		CDD9991D21A93423009536A0 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9991B21A93423009536A0 /* CharacterCell.swift */; };
-		CDD9992621A934BA009536A0 /* rnm_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9992521A934BA009536A0 /* rnm_challengeTests.swift */; };
 		CDD9992F21A934E1009536A0 /* characters.js in Resources */ = {isa = PBXBuildFile; fileRef = CDD9992E21A934E1009536A0 /* characters.js */; };
 		CDD9993121A93512009536A0 /* character.js in Resources */ = {isa = PBXBuildFile; fileRef = CDD9993021A93512009536A0 /* character.js */; };
 		CDD9993421A93544009536A0 /* AnimatedCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD9993321A93544009536A0 /* AnimatedCharacter.swift */; };
@@ -122,7 +121,6 @@
 		CDD9991321A931E1009536A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDD9991B21A93423009536A0 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		CDD9992321A934BA009536A0 /* rnm_challengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rnm_challengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CDD9992521A934BA009536A0 /* rnm_challengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rnm_challengeTests.swift; sourceTree = "<group>"; };
 		CDD9992721A934BA009536A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CDD9992E21A934E1009536A0 /* characters.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = characters.js; sourceTree = "<group>"; };
 		CDD9993021A93512009536A0 /* character.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = character.js; sourceTree = "<group>"; };
@@ -391,7 +389,6 @@
 				CD8CDE3721AA0D080019A44E /* Utilities */,
 				CDD9993721A93B10009536A0 /* Model */,
 				CDD9992D21A934BF009536A0 /* Mocks */,
-				CDD9992521A934BA009536A0 /* rnm_challengeTests.swift */,
 				CD6B88FA222007DA009EE080 /* Location */,
 				CD6B88F6222006AE009EE080 /* Character */,
 				CD6B88F222200451009EE080 /* Characters */,
@@ -673,7 +670,6 @@
 				CD6B88F522200485009EE080 /* CharactersViewModelTests.swift in Sources */,
 				CD8CDE3A21AA0F500019A44E /* NetworkManagerTests.swift in Sources */,
 				CD6B88FD222007EC009EE080 /* LocationViewModelTests.swift in Sources */,
-				CDD9992621A934BA009536A0 /* rnm_challengeTests.swift in Sources */,
 				CD6B88FF222008F8009EE080 /* CharacterCellViewModelTests.swift in Sources */,
 				CD8CDE3621AA0CF70019A44E /* LocalStorageTests.swift in Sources */,
 				CDD9996521A9ACCA009536A0 /* LocationTests.swift in Sources */,
