@@ -48,7 +48,6 @@ class rnm_challengeUITests: XCTestCase {
 
         app.buttons["Remove from favorites"].tap()
         app.navigationBars["Details"].buttons["Favorite characters"].tap()
-        sleep(2)
 
         XCTAssertFalse(app.tables.staticTexts[name].exists,
                       "There shouldn't be a favorite character with \(name).")
