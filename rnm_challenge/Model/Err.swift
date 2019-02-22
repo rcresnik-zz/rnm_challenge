@@ -23,8 +23,8 @@ struct Err: Error {
                 self.description = createErrorDescription(name: name, log: log)
             case .keyNotFound(_, let log):
                 self.description = name + " " + log.debugDescription
-            case .dataCorrupted(let log1):
-                print(log1)
+            case .dataCorrupted(let log):
+                self.description = name + " " + log.debugDescription
             }
         } else {
             self.description = ""
