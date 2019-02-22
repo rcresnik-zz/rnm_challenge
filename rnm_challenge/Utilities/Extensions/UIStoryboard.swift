@@ -14,7 +14,7 @@ extension UIStoryboard {
         if let controller = storyboard.instantiateViewController(withIdentifier: T.identifier) as? T {
             return controller
         } else {
-            fatalError()
+            fatalError("Failed to load view controller with identifier: \(T.identifier)")
         }
     }
 }

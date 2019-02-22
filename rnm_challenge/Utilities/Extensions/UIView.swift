@@ -13,7 +13,7 @@ extension UIView {
         if let view = Bundle.main.loadNibNamed(T.identifier, owner: self, options: nil)?.first as? T {
             return view
         } else {
-            fatalError()
+            fatalError("Failed to load view with identifier: \(T.identifier)")
         }
     }
 }

@@ -14,7 +14,7 @@ protocol Answerable {
 
 extension Answerable {
     func resultFrom<T: Decodable>(data: Data?, response: URLResponse?, error: Error?) -> Result<[T]> {
-        var result: Result<[T]> = Result.failure(Err(description: "Unknown error"))
+        var result: Result<[T]> = Result.failure(Err(sender: Answerable.self, description: "Unknown error"))
 
         if let data = data {
             if let objects =  try? JSONDecoder().decode(NetworkObject<T>.self, from: data).results {
@@ -24,7 +24,7 @@ extension Answerable {
             } else if let object = try? JSONDecoder().decode(T.self, from: data) {
                 result = Result.success([object])
             } else {
-                result = Result.failure(Err(description: "Decoding error"))
+                result = Result.failure(Err(sender: Answerable.self, description: "Decoding error"))
             }
         }
 

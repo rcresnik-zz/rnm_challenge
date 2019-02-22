@@ -10,6 +10,7 @@ import Foundation
 
 struct UrlConstants {
     static let baseUrl = "https://rickandmortyapi.com/api/"
+    
     struct Character {
         static func with(ids: [Int]? = nil, page: Int? = nil) -> String? {
             var string: String? = nil

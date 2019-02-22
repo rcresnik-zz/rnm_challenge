@@ -15,7 +15,7 @@ struct CharacterStore: Answerable {
         if let urlString = UrlConstants.Character.with(ids: ids, page: page) {
             url = URL.string(urlString)
         } else {
-            let result = Result<[AnimatedCharacter]>.failure(Err(description: "Couldn't generate URL."))
+            let result = Result<[AnimatedCharacter]>.failure(Err(sender: Answerable.self, description: "Couldn't generate URL."))
             completion(result)
             return
         }

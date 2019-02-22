@@ -31,8 +31,8 @@ struct Err: Error {
         }
     }
 
-    init(description: String) {
-        self.description = description
+    init<T>(sender: T, description: String) {
+        self.description = String(describing: sender.self) + ":  " + description
     }
 
     private func createErrorDescription(name: String, log: DecodingError.Context) -> String {
