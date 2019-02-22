@@ -29,6 +29,7 @@ class rnm_challengeUITests: XCTestCase {
     func testAddFavorites() {
         let name = "Morty Smith"
         let app = XCUIApplication()
+        app.launchArguments.append("uitesting")
 
         app.tables.staticTexts[name].tap()
 
