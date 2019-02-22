@@ -8,14 +8,14 @@
 
 import UIKit
 
-class CharacterTableViewCell: UITableViewCell, ReusableView, NibLoadableView {
+class CharacterCell: UITableViewCell, ReusableView, NibLoadableView {
     static let height: CGFloat = 120
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
 
-    func setup(viewModel: CharacterProtocol) {
+    func setup(viewModel: CharacterCellViewModel) {
         if let url = viewModel.profileImageUrl {
             profileImageView.image(from: url)
         }

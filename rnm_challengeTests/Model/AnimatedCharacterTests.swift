@@ -31,7 +31,7 @@ class CharacterTests: XCTestCase {
             XCTAssertEqual(morty.species, Species.human, "Morty is a human!")
             XCTAssertEqual(morty.gender, Gender.male, "Morty is a male!")
             XCTAssertEqual(morty.origin.name, "Earth", "Morty originates from earth!")
-            XCTAssert(morty.location.id == 20, "Location id should be 20!")
+            XCTAssertEqual(morty.location.id, 20, "Location id should be 20!")
         } catch let err as Err {
             XCTFail(err.description)
         } catch {
@@ -55,7 +55,7 @@ class CharacterTests: XCTestCase {
             XCTAssertEqual(rick.species, Species.human, "Rick is a human (actually not but oh well)!")
             XCTAssertEqual(rick.gender, Gender.male, "Rick is a male!")
             XCTAssertEqual(rick.origin.name, "Earth", "Rick originates from earth (or does he??)!")
-            XCTAssert(rick.location.id == 20, "Location id should be 20!")
+            XCTAssertEqual(rick.location.id, 20, "Location id should be 20!")
         } catch let err as Err {
             XCTFail(err.description)
         } catch {

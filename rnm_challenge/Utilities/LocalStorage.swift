@@ -42,11 +42,15 @@ struct LocalStorage {
         return favorites.contains(id)
     }
 
-    static func toggleFavorite(id: Int) {
+    static func toggleFavorite(id: Int) -> Bool {
         if LocalStorage.isFavorite(id: id) {
             LocalStorage.removeFavorite(id: id)
+
+            return false
         } else {
             LocalStorage.addFavorite(id: id)
+
+            return true
         }
     }
 }

@@ -22,7 +22,7 @@ class FavoritesViewController: UIViewController {
                 print("Couldnt load 'CharactersTableViewController' from stroyboard!")
                 return
         }
-        controller.viewModel = CharactersViewModel(items: [], canFetch: false)
+        controller.viewModel = CharactersTableViewModel(items: [], canFetch: false)
         controller.view.frame = view.bounds
         controller.canEdit = true
 
@@ -38,12 +38,13 @@ class FavoritesViewController: UIViewController {
 
         let ids = LocalStorage.favorites()
         
-        NetworkManager.shared.characterService.with(ids: ids) { (characters, err) in
-            if let err = err {
-                print(err.description)
-            } else if let characters = characters {
-                self.controller?.viewModel?.resetCharacters(items: characters)
+        NetworkManager.shared.characterService.with(ids: ids) { (result) in
+            switch result {
+            case .success(let characters):
+                self.controller?.viewModel.resetCharacters(characters)
                 self.controller?.tableView.reloadData()
+            case .failure(let err):
+                print(err.description)
             }
         }
     }

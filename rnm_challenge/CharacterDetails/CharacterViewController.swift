@@ -10,7 +10,7 @@ import UIKit
 
 class CharacterViewController: UIViewController {
     static let identifier = "CharacterViewController"
-    
+
     @IBOutlet weak var profileImageView: UIImageView!
 
     @IBOutlet weak var nameLabel: UILabel!
@@ -25,82 +25,59 @@ class CharacterViewController: UIViewController {
     
     @IBOutlet weak var favoritesButton: UIButton!
 
-    var viewModel: CharacterViewModel?
+    var characterId: Int = -1
+
+    fileprivate var originId = -1
+    fileprivate var locationId = -1
+    
+    var characterView: CharacterView = UIView.loadView(identifier: CharacterView.identifier)
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "Details"
-        setup()
-    }
 
-    func setup() {
-        guard let viewModel = viewModel else { return }
+        characterView.frame = view.bounds
+        view.addSubview(characterView)
 
-        if let url = viewModel.profileImageUrl {
-            profileImageView.image(from: url)
-            profileImageView.layer.cornerRadius = 10
-            profileImageView.layer.masksToBounds = true
-        }
-        nameLabel.text = viewModel.characterName
-        creationLabel.text = viewModel.creationText
+        NetworkManager.shared.characterService.with(id: characterId) { [weak self] (result) in
+            switch result {
+            case .success(let characer):
+                self?.originId = characer.origin.id ?? -1
+                self?.locationId = characer.location.id ?? -1
 
-        speciesLabel.text = viewModel.speciesName
-        genderLabel.text = viewModel.genderSpecification
-        statusLabel.text = viewModel.heartbeatStatus
-
-        let attributes: [NSAttributedString.Key : Any] = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
-                                                          NSAttributedString.Key.underlineColor: nameLabel.textColor]
-        originLabel.attributedText = NSAttributedString(string: viewModel.originLocation, attributes: attributes)
-        locationLabel.attributedText = NSAttributedString(string: viewModel.lastKnownLocation, attributes: attributes)
-
-        if let view = originLabel.superview {
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.originTapped(sender:)))
-            view.addGestureRecognizer(gesture)
-        }
-
-        if let view = locationLabel.superview {
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.locationTapped(sender:)))
-            view.addGestureRecognizer(gesture)
-        }
-
-        setupButton()
-    }
-
-    private func setupButton() {
-        guard let viewModel = viewModel else { return }
-        
-        let title = LocalStorage.isFavorite(id: viewModel.characterId) ? "Remove from favorites" : "Add to favorites"
-        favoritesButton.setTitle(title, for: .normal)
-    }
-
-    @objc func originTapped(sender: UITapGestureRecognizer) {
-        fetchData(id: viewModel?.originLocationId)
-    }
-
-    @objc func locationTapped(sender: UITapGestureRecognizer) {
-        fetchData(id: viewModel?.lastKnownLocationId)
-    }
-
-    private func fetchData(id: Int?) {
-        guard let id = id else { return }
-        
-        NetworkManager.shared.locationService.location(id: id) { (location, err) in
-            if let location = location {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let controller = storyboard.instantiateViewController(withIdentifier: LocationViewController.identifier)
-                (controller as? LocationViewController)?.viewModel = LocationViewModel(item: location)
-
-                self.navigationController?.pushViewController(controller, animated: true)
-            } else if let err = err {
+                let viewModel = CharacterViewModel(item: characer)
+                self?.characterView.setupWith(viewModel)
+            case .failure(let err):
                 print(err.description)
             }
         }
     }
+}
 
-    @IBAction func favoriteButtonTapped(_ sender: UIButton) {
-        guard let id = viewModel?.characterId else { return }
-        LocalStorage.toggleFavorite(id: id)
+extension CharacterViewController: Touchable {
+    func favoriteTapped() {
+        characterView.isFavorite = LocalStorage.toggleFavorite(id: characterId)
+    }
 
-        setupButton()
+    func originTapped() {
+        goToLocation(id: originId)
+    }
+
+    func locationTapped() {
+        goToLocation(id: locationId)
+    }
+
+    private func goToLocation(id: Int?) {
+        if let id = id,
+            id > 0,
+            let controller = UIStoryboard.loadViewController(identifier: LocationViewController.identifier) as? LocationViewController {
+            controller.locationId = locationId
+
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+        else {
+            return
+        }
     }
 }

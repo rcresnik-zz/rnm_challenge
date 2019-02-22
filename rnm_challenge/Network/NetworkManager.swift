@@ -8,7 +8,12 @@
 
 import Foundation
 
-typealias CompletionBlock<T> = (T?, Err?) -> Void
+enum Result<T> {
+    case success(T)
+    case failure(Err)
+}
+
+typealias CompletionBlock<T> = (Result<T>) -> Void
 
 class NetworkManager {
     let host: String
@@ -23,68 +28,84 @@ class NetworkManager {
     let locationService: LocationService = LocationService()
 }
 
-class CharacterService {
-    func all(page: Int = 1, completion: @escaping CompletionBlock<[AnimatedCharacter]>) {
-        guard let url = URL(string: UrlConstants.Character.all(page: page)) else {
-            let err = Err(description: "Error creating URL")
-            completion([], err)
-            return
+protocol Answerable {
+    func resultFrom<T: Decodable>(data: Data?, response: URLResponse?, error: Error?) -> Result<T>
+    func resultArrayFrom<T: Decodable>(data: Data?, response: URLResponse?, error: Error?) -> Result<[T]>
+}
+
+extension Answerable {
+    func resultArrayFrom<T: Decodable>(data: Data?, response: URLResponse?, error: Error?) -> Result<[T]> {
+        var result: Result<[T]> = Result.failure(Err(description: "Unknown error"))
+        var someError: Err?
+        if let data = data {
+            do {
+                let objects =  try JSONDecoder().decode(NetworkObject<T>.self, from: data).results
+                result = Result.success(objects)
+            } catch {
+                someError = Err(sender: NetworkManager.self, error: error)
+            }
+        } else if let error = error {
+            someError = Err(sender: T.self, error: error)
+        } else {
+            someError = Err(description: "Networking: Unknown error occured")
         }
+
+        if let err = someError {
+            result = Result.failure(err)
+        }
+
+        return result
+    }
+
+    func resultFrom<T: Decodable>(data: Data?, response: URLResponse?, error: Error?) -> Result<T> {
+        var result: Result<T> = Result.failure(Err(description: "Unknown error"))
+        var someError: Err?
+        if let data = data {
+            do {
+                let object =  try JSONDecoder().decode(T.self, from: data)
+                result = Result.success(object)
+            } catch {
+                someError = Err(sender: NetworkManager.self, error: error)
+            }
+        } else if let error = error {
+            someError = Err(sender: T.self, error: error)
+        } else {
+            someError = Err(description: "Networking: Unknown error occured")
+        }
+
+        if let err = someError {
+            result = Result.failure(err)
+        }
+
+        return result
+    }
+}
+
+class CharacterService: Answerable {
+
+    func all(page: Int = 1, completion: @escaping CompletionBlock<[AnimatedCharacter]>) {
+        let url = URL.string(UrlConstants.Character.all(page: page))
+
         let getRequest = URLRequest(url: url)
 
         let task = URLSession.shared.dataTask(with: getRequest) { (data, response, error) in
+            let result: Result<[AnimatedCharacter]> = self.resultArrayFrom(data: data, response: response, error: error)
             DispatchQueue.main.async() {
-                if let data = data {
-                    do {
-                        let results = try JSONDecoder().decode(NetworkObject<AnimatedCharacter>.self, from: data).results
-                        completion(results, nil)
-                    } catch let err as Err {
-                        completion([], err)
-                    } catch {
-                        let err = Err(sender: CharacterService.self, error: error)
-                        completion([], err)
-                    }
-                } else if let error = error {
-                    let err = Err(sender: CharacterService.self, error: error)
-                    completion([], err)
-                } else {
-                    let err = Err(description: "Networking: Unknown error occured")
-                    completion([], err)
-                }
+                completion(result)
             }
         }
         task.resume()
     }
 
     func with(id: Int, completion: @escaping CompletionBlock<AnimatedCharacter>) {
-        guard let url = URL(string: UrlConstants.Character.with(id: id))
-            else {
-                let err = Err(description: "Error creating URL")
-                completion(nil, err)
-                return
-        }
+        let url = URL.string(UrlConstants.Character.with(id: id))
 
         let getRequest = URLRequest(url: url)
 
         let task = URLSession.shared.dataTask(with: getRequest) { (data, response, error) in
+            let result: Result<AnimatedCharacter> = self.resultFrom(data: data, response: response, error: error)
             DispatchQueue.main.async() {
-                if let data = data {
-                    do {
-                        let character = try JSONDecoder().decode(AnimatedCharacter.self, from: data)
-                        completion(character, nil)
-                    } catch let err as Err {
-                        completion(nil, err)
-                    } catch {
-                        let err = Err(sender: CharacterService.self, error: error)
-                        completion(nil, err)
-                    }
-                } else if let error = error {
-                    let err = Err(sender: CharacterService.self, error: error)
-                    completion(nil, err)
-                } else {
-                    let err = Err(description: "Networking: Unknown error occured")
-                    completion(nil, err)
-                }
+                completion(result)
             }
         }
         task.resume()
@@ -92,72 +113,33 @@ class CharacterService {
     }
 
     func with(ids: [Int], completion: @escaping CompletionBlock<[AnimatedCharacter]>) {
-        guard let url = URL(string: UrlConstants.Character.with(ids: ids))
-            else {
-                let err = Err(description: "Error creating URL")
-                completion(nil, err)
-                return
-        }
+        let url = URL.string(UrlConstants.Character.with(ids: ids))
 
         let getRequest = URLRequest(url: url)
 
         let task = URLSession.shared.dataTask(with: getRequest) { (data, response, error) in
+            let result: Result<[AnimatedCharacter]> = self.resultArrayFrom(data: data, response: response, error: error)
             DispatchQueue.main.async() {
-                if let data = data {
-                    do {
-                        let characters = try JSONDecoder().decode([AnimatedCharacter].self, from: data)
-                        completion(characters, nil)
-                    } catch let err as Err {
-                        completion([], err)
-                    } catch {
-                        let err = Err(sender: CharacterService.self, error: error)
-                        completion([], err)
-                    }
-                } else if let error = error {
-                    let err = Err(sender: CharacterService.self, error: error)
-                    completion([], err)
-                } else {
-                    let err = Err(description: "Networking: Unknown error occured")
-                    completion([], err)
-                }
+                completion(result)
             }
         }
         task.resume()
     }
 }
 
-class LocationService {
+class LocationService: Answerable {
     func location(id: Int, completion: @escaping CompletionBlock<Location>) {
-        guard let url = URL(string: UrlConstants.Location.with(id: id))
-        else {
-            let err = Err(description: "Error creating URL")
-            completion(nil, err)
-            return
-        }
+        let url = URL.string(UrlConstants.Location.with(id: id))
 
         let getRequest = URLRequest(url: url)
 
         let task = URLSession.shared.dataTask(with: getRequest) { (data, response, error) in
+            let result: Result<Location> = self.resultFrom(data: data, response: response, error: error)
             DispatchQueue.main.async() {
-                if let data = data {
-                    do {
-                        let location = try JSONDecoder().decode(Location.self, from: data)
-                        completion(location, nil)
-                    } catch let err as Err {
-                        completion(nil, err)
-                    } catch {
-                        let err = Err(sender: CharacterService.self, error: error)
-                        completion(nil, err)
-                    }
-                } else if let error = error {
-                    let err = Err(sender: CharacterService.self, error: error)
-                    completion(nil, err)
-                } else {
-                    let err = Err(description: "Networking: Unknown error occured")
-                    completion(nil, err)
-                }
+                completion(result)
             }
         }
+        
         task.resume()
     }
 }

@@ -36,7 +36,12 @@ extension Location: Decodable {
         do {
             let container = try decoder.container(keyedBy: PropertyKeys.self)
 
-            self.id = try container.decodeIfPresent(Int.self, forKey: .id)
+            let urlString = try container.decode(String.self, forKey: .url)
+            var id = Int(urlString.components(separatedBy: CharacterSet.decimalDigits.inverted).joined())
+            if  id == nil {
+                id = try container.decodeIfPresent(Int.self, forKey: .id)
+            }
+            self.id = id
             self.name = try container.decode(String.self, forKey: .name)
 
             let typeString = try container.decodeIfPresent(String.self, forKey: .type)
